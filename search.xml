@@ -34,7 +34,9 @@
   <entry>
     <title>python数据分析之预测学生成绩</title>
     <url>/2023/04/15/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E9%A2%84%E6%B5%8B%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9/</url>
-    <content><![CDATA[<h1 id="获取资源"><a href="#获取资源" class="headerlink" title="获取资源"></a>获取资源</h1><p>文中引用的student-mat.csv文件获取可<a href="https://github.com/everythinglock/resource/blob/main/csv/student-mat.csv">点击这里</a>👈</p>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<h1 id="获取资源"><a href="#获取资源" class="headerlink" title="获取资源"></a>获取资源</h1><p>文中引用的student-mat.csv文件获取可<a href="https://github.com/everythinglock/resource/blob/main/csv/student-mat.csv">点击这里</a>👈</p>
 <h1 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> ElasticNet</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVR</span><br><span class="line"><span class="keyword">import</span> pickle</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 
@@ -531,19 +533,6 @@ Baseline               3.607595  4.902854
       </tags>
   </entry>
   <entry>
-    <title>纪念hexo部署博客成功</title>
-    <url>/2023/04/14/%E7%BA%AA%E5%BF%B5hexo%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F/</url>
-    <content><![CDATA[<p>使用学的第一门语言+第一个程序记录以下这个时刻</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello, world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>杂项</category>
-      </categories>
-      <tags>
-        <tag>时刻</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>图床的选取</title>
     <url>/2023/04/15/%E5%9B%BE%E5%BA%8A%E7%9A%84%E9%80%89%E5%8F%96/</url>
     <content><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>图床的选取要根据自己的需求来，我对图床的要求首先是稳定，我的博客肯定是要写很长时间的，里面会有很多图片外链，要是图床用着用着挂了，图片找不回来，那肯定是欲哭无泪了，如果图片还有备份，重新写一遍图片外链也是一个巨大且恶心的工程；其次是要便宜，尽量免费，毕竟资金有限，但是免费的图床是必然不够稳定的，用爱发电的东西都具有极大的不确定性。综上，推断出我需要一个每月都有免费额度的付费图床。在保证稳定的同时，也不用掏钱，我的博客的流量肯定不大，免费额度够用了。</p>
@@ -557,6 +546,19 @@ Baseline               3.607595  4.902854
       </categories>
       <tags>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>纪念hexo部署博客成功</title>
+    <url>/2023/04/14/%E7%BA%AA%E5%BF%B5hexo%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F/</url>
+    <content><![CDATA[<p>使用学的第一门语言+第一个程序记录以下这个时刻</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello, world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>时刻</tag>
       </tags>
   </entry>
   <entry>

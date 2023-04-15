@@ -22,12 +22,12 @@
 
 <meta name="google-site-verification" content="rjlKb9zypFzEXPWZwkPwBolOmpdsboR_yeLQC42BLKw" />
 
-    <meta name="description" content="获取资源文中引用的student-mat.csv文件获取可点击这里👈 导入包123456789101112import pandas as pdimport numpy as npimport matplotlib.pyplot as pltimport seaborn as snsfrom sklearn.linear_model import LinearRegressionfrom skl">
+    <meta name="description" content="获取资源文中引用的student-mat.csv文件获取可点击这里👈 导入包123456789101112import pandas as pdimport numpy as npimport matplotlib.pyplot as pltimport seaborn as snsfrom sklearn.linear_model import LinearRegressionfrom s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python数据分析之预测学生成绩">
 <meta property="og:url" content="https://everythinglock.github.io/2023/04/15/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E9%A2%84%E6%B5%8B%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9/index.html">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:description" content="获取资源文中引用的student-mat.csv文件获取可点击这里👈 导入包123456789101112import pandas as pdimport numpy as npimport matplotlib.pyplot as pltimport seaborn as snsfrom sklearn.linear_model import LinearRegressionfrom skl">
+<meta property="og:description" content="获取资源文中引用的student-mat.csv文件获取可点击这里👈 导入包123456789101112import pandas as pdimport numpy as npimport matplotlib.pyplot as pltimport seaborn as snsfrom sklearn.linear_model import LinearRegressionfrom s">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_10_1.png">
 <meta property="og:image" content="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_12_0.png">
@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_48_1.png">
 <meta property="og:image" content="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_57_0.png">
 <meta property="article:published_time" content="2023-04-15T05:22:49.000Z">
-<meta property="article:modified_time" content="2023-04-15T09:57:15.952Z">
+<meta property="article:modified_time" content="2023-04-15T12:10:37.251Z">
 <meta property="article:author" content="overlook">
 <meta property="article:tag" content="数据分析">
 <meta name="twitter:card" content="summary">
@@ -250,7 +250,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-04-15 13:22:49 / 修改时间：17:57:15" itemprop="dateCreated datePublished" datetime="2023-04-15T13:22:49+08:00">2023-04-15</time>
+      <time title="创建时间：2023-04-15 13:22:49 / 修改时间：20:10:37" itemprop="dateCreated datePublished" datetime="2023-04-15T13:22:49+08:00">2023-04-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -272,7 +272,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="获取资源"><a href="#获取资源" class="headerlink" title="获取资源"></a>获取资源</h1><p>文中引用的student-mat.csv文件获取可<a target="_blank" rel="noopener" href="https://github.com/everythinglock/resource/blob/main/csv/student-mat.csv">点击这里</a>👈</p>
+        <meta name="referrer" content="no-referrer" />
+
+<h1 id="获取资源"><a href="#获取资源" class="headerlink" title="获取资源"></a>获取资源</h1><p>文中引用的student-mat.csv文件获取可<a target="_blank" rel="noopener" href="https://github.com/everythinglock/resource/blob/main/csv/student-mat.csv">点击这里</a>👈</p>
 <h1 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> ElasticNet</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVR</span><br><span class="line"><span class="keyword">import</span> pickle</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 
