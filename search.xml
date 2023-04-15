@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>hexo&amp;theme-next配置指南</title>
+    <url>/2023/04/14/hexo%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p><font color=yellowgreen size=3>文章中若不具体指出， <em>_config.yml</em> 均指在next主题下的文件，而不是博客根目录下的文件</font></p>
+<h4 id="如何找到教程"><a href="#如何找到教程" class="headerlink" title="如何找到教程"></a>如何找到教程</h4><p>github上的教程并不完全，可以直接google搜索theme-next得到next主题的完整教程或<a href="https://theme-next.js.org/">点击这里</a></p>
+<h4 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h4><h5 id="添加头像"><a href="#添加头像" class="headerlink" title="添加头像"></a>添加头像</h5><p>next主题默认是不会在侧边栏显示头像的，可以在 <em>_config.yml</em> 文件中找到 <em>avatar</em> ,修改配置</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">/images/avatar.gif</span></span><br></pre></td></tr></table></figure>
+<p>url中你可以像上方一样写本地文件地址，也可以将自己的图片上传到图床后直接添加连接，例如：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">https://th.bing.com/th/id/OIP.jqV24SltVY2PaD_DTB2KBQAAA?pid=ImgDet&amp;rs=1</span></span><br></pre></td></tr></table></figure>
+<p>以上链接是我直接在bing图库中复制网址得到的</p>
+<span id="more"></span>
+<h5 id="头像旋转，圆形"><a href="#头像旋转，圆形" class="headerlink" title="头像旋转，圆形"></a>头像旋转，圆形</h5><p> <em>_config.yml</em> 中分别配置 <em>rotated</em> 和 <em>rounded</em> 为 <em>true</em> 即可设置头像变为圆形，且鼠标放在头像时头像会旋转</p>
+<h4 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h4><p>虽然现在我的博文比较少，搜索功能还没用，但是当内容多起来后，搜索功能还是有用的，更重要的就是我想加上这个功能</p>
+<ul>
+<li>先下载一个包，以此实现本地搜索功能  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure></li>
+<li>现在修改博客根目录下载 <em>_.config.yml</em> 文件，在底部添加（其他任意位置都行）：  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">    <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">    <span class="attr">content:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure></li>
+<li>最后修改 <em>_.config.yml</em> 文件，找到Local search部分：  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">trigger:</span> <span class="string">auto</span></span><br><span class="line">    <span class="attr">top_n_per_article:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">unescape:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">preload:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="关联社交网站"><a href="#关联社交网站" class="headerlink" title="关联社交网站"></a>关联社交网站</h4><p>在 <em>_.config.yml</em> 文件中找到social部分，取消注释，并修改对应网址</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="attr">E-Mail:</span> <span class="string">mailto:yourname@gmail.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br><span class="line">  <span class="attr">Weibo:</span> <span class="string">https://weibo.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-weibo</span></span><br><span class="line">  <span class="attr">Twitter:</span> <span class="string">https://twitter.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-twitter</span></span><br><span class="line">  <span class="attr">FB Page:</span> <span class="string">https://www.facebook.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-facebook</span></span><br><span class="line">  <span class="attr">StackOverflow:</span> <span class="string">https://stackoverflow.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-stack-overflow</span></span><br><span class="line">  <span class="attr">YouTube:</span> <span class="string">https://youtube.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-youtube</span></span><br><span class="line">  <span class="attr">Instagram:</span> <span class="string">https://instagram.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-instagram</span></span><br><span class="line">  <span class="attr">Skype:</span> <span class="string">skype:yourname?call|chat</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-skype</span></span><br></pre></td></tr></table></figure>
+<p>|| 前面改成对应网址就行，|| 后面可以不管</p>
+<h4 id="修改网站图标"><a href="#修改网站图标" class="headerlink" title="修改网站图标"></a>修改网站图标</h4><p>网站图标就是标签页上的图标，next默认是一个N，想要修改需要在 <em>_config.yml</em> 中找到favicon，修改其中的url，small,medium都改，如：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">https://i.328888.xyz/2023/04/14/i7fYQX.png</span> </span><br><span class="line">  <span class="attr">medium:</span> <span class="string">https://i.328888.xyz/2023/04/14/i7fYQX.png</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>hack</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>让google搜索到被hexo部署到github上的博客</title>
+    <url>/2023/04/15/%E6%80%8E%E4%B9%88%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%90%9C%E7%B4%A2%E5%88%B0/</url>
+    <content><![CDATA[<h4 id="我的环境"><a href="#我的环境" class="headerlink" title="我的环境"></a>我的环境</h4><ul>
+<li><p><a href="https://github.com/hexojs/hexo">hexo</a>生成博客</p>
+</li>
+<li><p>主题是<a href="https://github.com/theme-next/hexo-theme-next">theme-next</a></p>
+</li>
+<li><p>使用github托管（以后也可能转到gitee）</p>
+</li>
+</ul>
+<h4 id="测试网站能否被google检测到"><a href="#测试网站能否被google检测到" class="headerlink" title="测试网站能否被google检测到"></a>测试网站能否被google检测到</h4><p>搜索框（注意不是地址栏）输入<code>site:https:yourname.github.io</code>, 如果显示以下界面：</p>
+<span id="more"></span>
+
+<p><img src="https://i.328888.xyz/2023/04/15/i7RGsx.png" alt="Google Search Consolegoogle"></p>
+<p>说明你的网站google还找不到，为了解决这个问题，搜索Google Search Console。</p>
+<h4 id="Google-Search-Console添加自己的网址"><a href="#Google-Search-Console添加自己的网址" class="headerlink" title="Google Search Console添加自己的网址"></a>Google Search Console添加自己的网址</h4><ol>
+<li>点击进入<a href="https://search.google.com/search-console/about">Google Search Console</a></li>
+<li>通过网址前缀选项输入自己的github page网址，例如我的是<a href="https://everythinglock.github.io/">https://everythinglock.github.io</a></li>
+<li>hexo自有特殊情况在此，使用不了html文件验证，所以我们使用html标记验证，复制他给的元标记，粘贴到对应文件中，如果你使用next主题，文件为themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;head&#x2F;head.njk，其他主题应该也有对应文件，将元标记粘贴到文件最底部保存</li>
+<li>执行以下命令后点击验证就大功告成 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="添加sitemap"><a href="#添加sitemap" class="headerlink" title="添加sitemap"></a>添加sitemap</h4><p>sitemap可以让网络爬虫了解我们网站的结构，快速建立索引，加快爬虫的爬取。</p>
+<ol>
+<li>安装插件<br>在<font size=4 color=yellowgreen>blog目录</font>下执行<code>npm install hexo-generator-sitemap --save</code></li>
+<li>更新配置<br> 在blog根目录下的_config.yml文件中添加以下内容： <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br></pre></td></tr></table></figure>
+ 返回终端执行命令： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+ 最后注意，根目录下_config.yml中的url应该修改为<a href="https://yourname.github.io格式/">https://yourname.github.io格式</a></li>
+<li>添加站点地图<br>左方侧边栏点击站点地图，然后输入你的sitemap文件地址就行，如：<br><img src="https://i.328888.xyz/2023/04/15/i7mm6V.png" alt="sitemap"></li>
+</ol>
+<p>成功！但是目前google可能还是找不到你的网站，这是正常现象，等待一段时间即可。</p>
+]]></content>
+      <categories>
+        <category>hack</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>纪念hexo部署博客成功.md</title>
+    <url>/2023/04/14/%E7%BA%AA%E5%BF%B5hexo%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F/</url>
+    <content><![CDATA[<p>使用学的第一门语言+第一个程序记录以下这个时刻</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello, world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>时刻</tag>
+      </tags>
+  </entry>
+</search>
