@@ -370,22 +370,22 @@
 
 <pre><code>Text(0, 0.5, &#39;final score&#39;)
 </code></pre>
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_10_1.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_10_1.png" alt="png"></p>
 <h2 id="学生成绩分布直方图"><a href="#学生成绩分布直方图" class="headerlink" title="学生成绩分布直方图"></a>学生成绩分布直方图</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.gca().xaxis.set_major_locator(plt.MultipleLocator(<span class="number">1</span>))</span><br><span class="line">plt.hist(student[<span class="string">&quot;G3&quot;</span>], bins=<span class="number">50</span>, edgecolor=<span class="string">&quot;black&quot;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;score&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;number&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_12_0.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_12_0.png" alt="png"></p>
 <p>一旦去掉0分，可以认为和正态分布有较高的相似度</p>
 <p>加上0分的，整张图完全不符合正态分布，且得分为1,2,3的人直接断层，严重怀疑0分不是单纯的考试成绩</p>
 <h2 id="分析年龄的影响"><a href="#分析年龄的影响" class="headerlink" title="分析年龄的影响"></a>分析年龄的影响</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.hist(student[<span class="string">&quot;age&quot;</span>], bins=<span class="number">20</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;age&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;number&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_15_0.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_15_0.png" alt="png"></p>
 <p>可以得出年龄集中在15～19,但是很难再得到什么有价值的信息</p>
 <h2 id="尝试将性别和最终成绩一起分析"><a href="#尝试将性别和最终成绩一起分析" class="headerlink" title="尝试将性别和最终成绩一起分析"></a>尝试将性别和最终成绩一起分析</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">female = student[student[<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;F&quot;</span>][<span class="string">&quot;G3&quot;</span>]</span><br><span class="line">male = student[student[<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;M&quot;</span>][<span class="string">&quot;G3&quot;</span>]</span><br><span class="line">error = np.<span class="built_in">abs</span>(female - male)</span><br><span class="line">labels = [<span class="string">&quot;female&quot;</span>, <span class="string">&quot;male&quot;</span>]</span><br><span class="line">plt.hist([female, male], bins=<span class="number">5</span>, label=labels)</span><br><span class="line">plt.xlabel(<span class="string">&quot;score&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;number&quot;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_18_0.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_18_0.png" alt="png"></p>
 <p>这证实性别和成绩没什么大关系</p>
 <h2 id="将年龄和最终成绩一起分析"><a href="#将年龄和最终成绩一起分析" class="headerlink" title="将年龄和最终成绩一起分析"></a>将年龄和最终成绩一起分析</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.boxplot(student, x=<span class="string">&quot;age&quot;</span>, y=<span class="string">&quot;G3&quot;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -394,12 +394,12 @@
 
 <pre><code>&lt;Axes: xlabel=&#39;age&#39;, ylabel=&#39;G3&#39;&gt;
 </code></pre>
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_21_1.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_21_1.png" alt="png"></p>
 <p>可以看出，除了20岁的人（人少的可怜）的分数确实高于其他年龄段的，年龄对成绩的平均数可以说没有什么影响，但是确实有缓慢下降的趋势<br>，毕竟年龄提升后课程难度也会加大。</p>
 <h2 id="居住地对成绩的影响分析"><a href="#居住地对成绩的影响分析" class="headerlink" title="居住地对成绩的影响分析"></a>居住地对成绩的影响分析</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x1 = student.loc[student[<span class="string">&quot;address&quot;</span>] == <span class="string">&quot;U&quot;</span>, <span class="string">&quot;G3&quot;</span>] <span class="comment">#城市</span></span><br><span class="line">x2 = student.loc[student[<span class="string">&quot;address&quot;</span>] == <span class="string">&quot;R&quot;</span>, <span class="string">&quot;G3&quot;</span>] <span class="comment">#农村</span></span><br><span class="line">sns.kdeplot(x1)</span><br><span class="line">sns.kdeplot(x2)</span><br><span class="line">plt.legend([<span class="string">&quot;urban&quot;</span>, <span class="string">&quot;rural&quot;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&quot;final score&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;rate&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_24_0.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_24_0.png" alt="png"></p>
 <p>看的出来，几乎没有影响</p>
 <h1 id="相关度的计算"><a href="#相关度的计算" class="headerlink" title="相关度的计算"></a>相关度的计算</h1><h2 id="使用欧几里德距离计算相关性"><a href="#使用欧几里德距离计算相关性" class="headerlink" title="使用欧几里德距离计算相关性"></a>使用欧几里德距离计算相关性</h2><p>我已经逐个分析了性别和年龄的影响，接下来我将对相关型进行计算</p>
 <p>其实导入的包里面就有这个函数，但是为了更好的理解原理，我决定手写一下</p>
@@ -439,7 +439,7 @@ Name: G3, dtype: float64
 
 <pre><code>&lt;Axes: xlabel=&#39;Medu&#39;, ylabel=&#39;G3&#39;&gt;
 </code></pre>
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_34_1.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_34_1.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = student[<span class="string">&quot;Medu&quot;</span>][<span class="number">0</span>:<span class="number">300</span>]</span><br><span class="line">y = student[<span class="string">&quot;G3&quot;</span>][<span class="number">0</span>:<span class="number">300</span>]</span><br><span class="line">sns.swarmplot(x=x, y=y)</span><br></pre></td></tr></table></figure>
 
 
@@ -447,7 +447,7 @@ Name: G3, dtype: float64
 
 <pre><code>&lt;Axes: xlabel=&#39;Medu&#39;, ylabel=&#39;G3&#39;&gt;
 </code></pre>
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_35_1.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_35_1.png" alt="png"></p>
 <p>从上面两张箱线图可以看出，派出Medu&#x3D;0的极少数情况，随着Medu的增加，学生的得分区间也在逐渐上升，猜想正确</p>
 <p>但是我们还需要处理非数值数据</p>
 <h2 id="独热编码"><a href="#独热编码" class="headerlink" title="独热编码"></a>独热编码</h2><p>要处理非数值的数据，独热编码是一个不错的方法</p>
@@ -471,7 +471,7 @@ Name: G3, dtype: float64
 <h2 id="失败次数对最终成绩的影响"><a href="#失败次数对最终成绩的影响" class="headerlink" title="失败次数对最终成绩的影响"></a>失败次数对最终成绩的影响</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">failures_boxenplot = sns.boxenplot(student, x=<span class="string">&quot;failures&quot;</span>, y=<span class="string">&quot;G3&quot;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;number of failures&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;final score&quot;</span>)</span><br><span class="line">plt.title(<span class="string">&quot;How the number of failures affects the final score&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_42_0.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_42_0.png" alt="png"></p>
 <p>由此可见，分数随着失败次数的增加而减少</p>
 <h2 id="双亲受教育程度对最终成绩的影响"><a href="#双亲受教育程度对最终成绩的影响" class="headerlink" title="双亲受教育程度对最终成绩的影响"></a>双亲受教育程度对最终成绩的影响</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parent_ed = student[<span class="string">&quot;Fedu&quot;</span>] + student[<span class="string">&quot;Medu&quot;</span>]</span><br><span class="line">sns.boxenplot(student, x=parent_ed, y=<span class="string">&quot;G3&quot;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -480,7 +480,7 @@ Name: G3, dtype: float64
 
 <pre><code>&lt;Axes: ylabel=&#39;G3&#39;&gt;
 </code></pre>
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_45_1.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_45_1.png" alt="png"></p>
 <p>可以看出随着父母受教育程度上升，最终成绩的平均值在上升，得分区间也在升高</p>
 <h2 id="升学意愿对成绩的影响"><a href="#升学意愿对成绩的影响" class="headerlink" title="升学意愿对成绩的影响"></a>升学意愿对成绩的影响</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.boxenplot(student, x=<span class="string">&quot;higher_yes&quot;</span>, y=<span class="string">&quot;G3&quot;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -489,7 +489,7 @@ Name: G3, dtype: float64
 
 <pre><code>&lt;Axes: xlabel=&#39;higher_yes&#39;, ylabel=&#39;G3&#39;&gt;
 </code></pre>
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_48_1.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_48_1.png" alt="png"></p>
 <p>显然有升学意愿的人成绩更高</p>
 <h1 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h1><h2 id="均方根误差，平均绝对误差"><a href="#均方根误差，平均绝对误差" class="headerlink" title="均方根误差，平均绝对误差"></a>均方根误差，平均绝对误差</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate_predictions</span>(<span class="params">y_hat, y</span>): </span><br><span class="line">    mae = np.mean(<span class="built_in">abs</span>(y_hat - y)) </span><br><span class="line">    rmse = np.sqrt(np.mean((y_hat - y) ** <span class="number">2</span>)) </span><br><span class="line">    <span class="keyword">return</span> mae, rmse </span><br></pre></td></tr></table></figure>
 
@@ -512,7 +512,7 @@ Baseline               3.607595  4.902854
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 找出最合适的模型</span></span><br><span class="line">plt.figure(figsize=(<span class="number">12</span>, <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 平均绝对误差</span></span><br><span class="line">ax =  plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">results.sort_values(<span class="string">&#x27;mae&#x27;</span>, ascending = <span class="literal">True</span>).plot.bar(y = <span class="string">&#x27;mae&#x27;</span>, color = <span class="string">&#x27;b&#x27;</span>, ax = ax, fontsize=<span class="number">20</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;error&#x27;</span>, fontsize=<span class="number">20</span>) </span><br><span class="line">plt.ylabel(<span class="string">&#x27;MAE&#x27;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 均方根误差</span></span><br><span class="line">ax = plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">results.sort_values(<span class="string">&#x27;rmse&#x27;</span>, ascending = <span class="literal">True</span>).plot.bar(y = <span class="string">&#x27;rmse&#x27;</span>, color = <span class="string">&#x27;r&#x27;</span>, ax = ax, fontsize=<span class="number">20</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;error&#x27;</span>, fontsize=<span class="number">20</span>) </span><br><span class="line">plt.ylabel(<span class="string">&#x27;RMSE&#x27;</span>,fontsize=<span class="number">20</span>)</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="http://rt5fshcym.hn-bkt.clouddn.com/pictures/output_57_0.png" alt="png"></p>
+<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/output_57_0.png" alt="png"></p>
 <p>最后我们发现，当训练集:测试集 &#x3D; 80%:20%时,random forest(随机森林)算法误差最小，故保存该算法为最终的模型,保存到文件中方便我们以后调用</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model = RandomForestRegressor()</span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line">filename = <span class="string">&quot;final_model&quot;</span></span><br><span class="line">pickle.dump(model, <span class="built_in">open</span>(filename, <span class="string">&#x27;wb&#x27;</span>)) </span><br></pre></td></tr></table></figure>
 
