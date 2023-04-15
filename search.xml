@@ -25,7 +25,7 @@
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">https://i.328888.xyz/2023/04/14/i7fYQX.png</span> </span><br><span class="line">  <span class="attr">medium:</span> <span class="string">https://i.328888.xyz/2023/04/14/i7fYQX.png</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>hack</category>
+        <category>折腾</category>
       </categories>
       <tags>
         <tag>博客</tag>
@@ -546,10 +546,10 @@ Baseline               3.607595  4.902854
   <entry>
     <title>图床的选取</title>
     <url>/2023/04/15/%E5%9B%BE%E5%BA%8A%E7%9A%84%E9%80%89%E5%8F%96/</url>
-    <content><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>图床的选取要根据自己的需求来，我对图床的要求首先是稳定，我的博客肯定是要写很长时间的，里面会有很多图片外链，要是图床用着用着挂了，图片找不回来，那肯定是欲哭无泪了，如果图片还有备份，重新写一遍图片外链也是一个巨大且恶心的工程；其次是便宜，尽量免费，毕竟资金有限但是免费的图床是必然不够稳定的，用爱发电的东西都具有极大的不确定性。综上，推断出我需要一个每月都有免费额度的付费图床。在保证稳定的同时，也不用掏钱，我的博客的流量肯定不大，免费额度够用了。</p>
+    <content><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>图床的选取要根据自己的需求来，我对图床的要求首先是稳定，我的博客肯定是要写很长时间的，里面会有很多图片外链，要是图床用着用着挂了，图片找不回来，那肯定是欲哭无泪了，如果图片还有备份，重新写一遍图片外链也是一个巨大且恶心的工程；其次是要便宜，尽量免费，毕竟资金有限，但是免费的图床是必然不够稳定的，用爱发电的东西都具有极大的不确定性。综上，推断出我需要一个每月都有免费额度的付费图床。在保证稳定的同时，也不用掏钱，我的博客的流量肯定不大，免费额度够用了。</p>
 <span id="more"></span>
 
-<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>其实可选的还真不少，但是我最后还是确定了七牛云，其运营时间长、用户基数大、每月免费额度10g，各方面都非常合适</p>
+<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>其实可选的还真不少，但是我最后还是确定了七牛云，其运营时间长、用户基数大、每月免费额度10g，各方面都非常合适。</p>
 <h2 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h2><p>网上的很多教程，都写了dsn加速云云，这东西和作为图床并不直接挂钩的同时还十分复杂，现在对我来说并不十分必要，所以直接把图片传上七牛云复制外链就行了，不要瞎折腾</p>
 ]]></content>
       <categories>
@@ -592,7 +592,7 @@ Baseline               3.607595  4.902854
 <p>成功！但是目前google可能还是找不到你的网站，这是正常现象，等待一段时间即可。</p>
 ]]></content>
       <categories>
-        <category>hack</category>
+        <category>折腾</category>
       </categories>
       <tags>
         <tag>博客</tag>
