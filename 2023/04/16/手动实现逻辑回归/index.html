@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://i.328888.xyz/2023/04/15/i7xbAy.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.328888.xyz/2023/04/14/i7fYQX.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://i.328888.xyz/2023/04/14/i7fYQX.png">
+  <link rel="mask-icon" href="https://i.328888.xyz/2023/04/15/i7xH93.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.snore.work","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+<meta name="google-site-verification" content="rjlKb9zypFzEXPWZwkPwBolOmpdsboR_yeLQC42BLKw" />
+
+    <meta name="description" content="12import matplotlib.pyplot as pltimport numpy as np 原理 预测 逻辑回归不同于线性回归直接输出结果，它输出的是结果的数理逻辑值：\(p &#x3D; \sigma(\mathbf{w}\mathbf{x} + b)\)，\(p\)可以理解为对y&#x3D;1概率的预测 其中\(\sigma\)是一个sigmoid函数，\(\sigma(z) &#x3D; \frac{1}{1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手动实现逻辑回归">
+<meta property="og:url" content="https://blog.snore.work/2023/04/16/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/index.html">
+<meta property="og:site_name" content="BLOG">
+<meta property="og:description" content="12import matplotlib.pyplot as pltimport numpy as np 原理 预测 逻辑回归不同于线性回归直接输出结果，它输出的是结果的数理逻辑值：\(p &#x3D; \sigma(\mathbf{w}\mathbf{x} + b)\)，\(p\)可以理解为对y&#x3D;1概率的预测 其中\(\sigma\)是一个sigmoid函数，\(\sigma(z) &#x3D; \frac{1}{1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-16T14:32:05.000Z">
+<meta property="article:modified_time" content="2023-04-16T14:48:24.397Z">
+<meta property="article:author" content="overlook">
+<meta property="article:tag" content="数据分析">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.snore.work/2023/04/16/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.snore.work/2023/04/16/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/","path":"2023/04/16/手动实现逻辑回归/","title":"手动实现逻辑回归"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>手动实现逻辑回归 | BLOG</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-41VYEVV1W8"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-41VYEVV1W8","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">A Foolish Consistency is the Hobgoblin of Little Minds</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B"><span class="nav-number">1.1.</span> <span class="nav-text">预测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E5%92%8C%E6%88%90%E6%9C%AC%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">训练和成本函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%93%8D"><span class="nav-number">2.</span> <span class="nav-text">实操</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="nav-number">2.2.</span> <span class="nav-text">实现逻辑回归</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="overlook"
+      src="https://th.bing.com/th/id/OIP.jqV24SltVY2PaD_DTB2KBQAAAA?pid=ImgDet&rs=1">
+  <p class="site-author-name" itemprop="name">overlook</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/everythinglock" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;everythinglock" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:123fangdong@gmail.com" title="E-Mail → mailto:123fangdong@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.snore.work/2023/04/16/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://th.bing.com/th/id/OIP.jqV24SltVY2PaD_DTB2KBQAAAA?pid=ImgDet&rs=1">
+      <meta itemprop="name" content="overlook">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BLOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="手动实现逻辑回归 | BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          手动实现逻辑回归
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-04-16 22:32:05 / 修改时间：22:48:24" itemprop="dateCreated datePublished" datetime="2023-04-16T22:32:05+08:00">2023-04-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<h1 id="原理">原理</h1>
+<h2 id="预测">预测</h2>
+<p>逻辑回归不同于线性回归直接输出结果，它输出的是结果的数理逻辑值：<span
+class="math inline">\(p = \sigma(\mathbf{w}\mathbf{x} +
+b)\)</span>，<span
+class="math inline">\(p\)</span>可以理解为对y=1概率的预测</p>
+<p>其中<span
+class="math inline">\(\sigma\)</span>是一个sigmoid函数，<span
+class="math inline">\(\sigma(z) = \frac{1}{1 +
+e^{-z}}\)</span>，如下图：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x = np.arange(-<span class="number">10</span>, <span class="number">10</span>, <span class="number">0.1</span>)</span><br><span class="line">y = <span class="number">1</span> / (<span class="number">1</span> + np.e**(-x))</span><br><span class="line">plt.figure(figsize=(<span class="number">5</span>,<span class="number">2</span>)) <span class="comment">#要放在plt.plot之前</span></span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.axhline(y=<span class="number">0.5</span>, color=<span class="string">&#x27;grey&#x27;</span>, linestyle=<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">plt.axhline(y=<span class="number">1</span>, color=<span class="string">&#x27;grey&#x27;</span>, linestyle=<span class="string">&#x27;:&#x27;</span>) <span class="comment">#y=0.5,1 分别画一条线</span></span><br><span class="line">plt.axvline(x=<span class="number">0</span>, color=<span class="string">&#x27;black&#x27;</span>, linestyle=<span class="string">&#x27;-&#x27;</span>) <span class="comment">#x=0 画一条线</span></span><br><span class="line">plt.title(<span class="string">&quot;sigmoid&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/logisim_regression/output_4_0.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
+<p>一旦逻辑回归模型估算出实例x属于正类的概率 <span
+class="math inline">\(p=\sigma(\hat{z})\)</span> ，就可以轻松预测出
+<span class="math inline">\(\hat{y}\)</span>： <span
+class="math display">\[\hat{y} = \begin{cases}
+0 &amp; ,p &lt; 0.5 \\
+1 &amp; ,p \geq 0.5
+\end{cases}\]</span></p>
+<span id="more"></span>
+<h2 id="训练和成本函数">训练和成本函数</h2>
+<p>训练的目的就是设置参数向量θ,使模型对正类实例做出高概率估算(y=1),对负类实例做出低概率估算(y=0)。
+下面公式所示为单个训练实例x的成本函数,正说明了这一点。 <span
+class="math display">\[J(\theta) = \begin{cases}
+-log(\hat{p}) &amp; ,y=1 \\
+-log(1-\hat{p}) &amp; ,y=0
+\end{cases}\]</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = np.arange(<span class="number">0.01</span>, <span class="number">1</span>, <span class="number">0.02</span>)</span><br><span class="line">y1 = -np.log(x)</span><br><span class="line">y0 = -np.log(<span class="number">1</span>-x)</span><br><span class="line">plt.figure(figsize=(<span class="number">4</span>, <span class="number">2</span>))</span><br><span class="line">plt.plot(x, y1)</span><br><span class="line">plt.plot(x, y0)</span><br><span class="line">plt.axvline(x=<span class="number">0.5</span>, color=<span class="string">&#x27;black&#x27;</span>, linestyle=<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/logisim_regression/output_8_0.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
+<p>如图，当 <span class="math inline">\(p\)</span> 接近于0时, <span
+class="math inline">\(-log(p)\)</span>
+会变得非常大,所以如果模型估算一个正类实例的概率接近于0,成本将会变得很高。同理估算出一个负类实例的概率接近1,成本也会变得非常高。</p>
+<p>那么反过来,当 <span class="math inline">\(p\)</span> 接近于1的时候,
+<span class="math inline">\(-log(p)\)</span>
+接近于0,所以对一个负类实例估算出的概率接近于0,对一个正类实例估算出的概率接近于1,而成本则都接近于0,这不正好是我们想要的吗?</p>
+<p>值得注意的是，当y=0时, <span class="math display">\[-log(1-p) = - [
+ylog(p) + (1-y)log(1-p) ]\]</span>
+y=1时同样如此，所以可以将分段函数合为一个公式。得到成本函数： <span
+class="math display">\[J(\theta) = - \frac{1}{m} \sum_{i=1}^{m}[ ylog(p)
++ (1-y)log(1-p) ]\]</span></p>
+<p>但是坏消息是,这个函数没有已知的闭式方程(不存在一个标准方程的等价方程)来计算出最小化成本函数的θ值。而好消息是这是个凸函数,所以通过梯度下降(或是其他任意优化算法)保证能够找出全局最小值(只要学习率不是太高,你又能长时间等待)</p>
+<p>现在给出其偏导公式，求出并没有看起来那么困难，把<span
+class="math inline">\(p\)</span>展开为<span
+class="math inline">\(\sigma(wx+b)\)</span>,求起来就简单了： 首先定义
+<span class="math inline">\(error= \hat{y} - y\)</span>，<span
+class="math inline">\(\hat{y}\)</span>为y的预测值，为了理解下面的公式，别忘了<span
+class="math inline">\(\hat{y} = wx+b\)</span> <span
+class="math display">\[\frac{\partial{J}}{\partial{w}} = \frac{1}{m}
+\sum_{i=1}^{m}error \cdot x\]</span> <span
+class="math display">\[\frac{\partial{J}}{\partial{b}} = \frac{1}{m}
+\sum_{i=1}^{m}error\]</span></p>
+<p>现在我们已经了解了实现逻辑回归需要的知识。</p>
+<h1 id="实操">实操</h1>
+<h2 id="数据处理">数据处理</h2>
+<p>下面我将使用一个非常有名的数据集——鸢尾植物数据集——来说明逻辑回归共有150朵鸢尾花,分别来自三个不同品种(山鸢尾、变色鸢尾和维吉尼亚鸢尾),数据里包含花的
+<em>萼片以及花瓣的长度和宽度</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">df = pd.DataFrame(data=iris.data, </span><br><span class="line">                  columns=iris.feature_names) <span class="comment">#读取数据</span></span><br><span class="line">save = ~(iris.target == <span class="number">2</span>) <span class="comment">#保存类别不为2的花</span></span><br><span class="line">X = df[save] <span class="comment">#取出所有不是维吉尼亚鸢尾的花,即只留下两类花对应0,1</span></span><br><span class="line">y = iris.target[save]</span><br><span class="line"><span class="built_in">print</span>(X.head())</span><br><span class="line"><span class="built_in">print</span>(y)</span><br></pre></td></tr></table></figure>
+<pre><code>   sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)
+0                5.1               3.5                1.4               0.2
+1                4.9               3.0                1.4               0.2
+2                4.7               3.2                1.3               0.2
+3                4.6               3.1                1.5               0.2
+4                5.0               3.6                1.4               0.2
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]</code></pre>
+<h2 id="实现逻辑回归">实现逻辑回归</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">logisticRegression</span>(<span class="params">x:np.ndarray, y:np.ndarray, num_iter=<span class="number">5000</span>, alpha=<span class="number">0.01</span></span>):</span><br><span class="line">    w, b = np.zeros(<span class="number">4</span>), <span class="number">0</span></span><br><span class="line">    m = w.shape[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(num_iter):</span><br><span class="line">        z = x.dot(w) + b</span><br><span class="line">        y_hat = <span class="number">1</span> / (<span class="number">1</span> + np.e**(-z))</span><br><span class="line">        error = np.array(y_hat - y)</span><br><span class="line">        der_w = <span class="number">1</span>/m * np.<span class="built_in">sum</span>(x.T.dot(error))</span><br><span class="line">        der_b = <span class="number">1</span>/m * np.<span class="built_in">sum</span>(error)</span><br><span class="line">        w = w - (alpha * der_w)</span><br><span class="line">        b = b - (alpha * der_b)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> w, b</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">predict</span>(<span class="params">x:pd.DataFrame, w:np.ndarray, b:<span class="built_in">float</span></span>):</span><br><span class="line">    z = x.dot(w) + b</span><br><span class="line">    tmp = <span class="number">1</span> / (<span class="number">1</span> + np.e**(-z))</span><br><span class="line">    y_hat = <span class="built_in">list</span>()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tmp:</span><br><span class="line">        <span class="keyword">if</span> i &lt; <span class="number">0.5</span>:</span><br><span class="line">            y_hat.append(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            y_hat.append(<span class="number">1</span>)</span><br><span class="line">    y_hat = np.array(y_hat)</span><br><span class="line">    <span class="keyword">return</span> y_hat</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">error_variance</span>(<span class="params">y_hat:np.ndarray, y_test:np.ndarray</span>):</span><br><span class="line">    m = y_hat.shape[<span class="number">0</span>]</span><br><span class="line">    variance = <span class="number">1</span>/m * np.<span class="built_in">sum</span>((y_hat - y_test)**<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> variance</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;__main__&#x27;</span> == __name__:</span><br><span class="line">    iris = datasets.load_iris()</span><br><span class="line">    df = pd.DataFrame(data=iris.data,</span><br><span class="line">                    columns=iris.feature_names) <span class="comment">#读取数据</span></span><br><span class="line">    save = ~(iris.target == <span class="number">2</span>) <span class="comment">#保存类别不为2的花</span></span><br><span class="line">    X = df[save] <span class="comment">#去除维吉尼亚鸢尾花,只留下两类花对应0,1</span></span><br><span class="line">    y = iris.target[save]</span><br><span class="line"></span><br><span class="line">    x_train, x_test, y_train, y_test = train_test_split(</span><br><span class="line">        X, y, test_size=<span class="number">0.2</span>) <span class="comment">#已8:2拆分数据集为训练集和数据集</span></span><br><span class="line"></span><br><span class="line">    w, b = logisticRegression(x_train, y_train) <span class="comment">#逻辑回归返回y=wx+b中的w,b</span></span><br><span class="line">    y_hat = predict(x_test, w, b) <span class="comment">#使用测试集进行测试</span></span><br><span class="line">    variance = error_variance(y_hat, y_test)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;预测结果为：<span class="subst">&#123;y_hat&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;真实结果为：<span class="subst">&#123;y_test&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;方差为：<span class="subst">&#123;variance&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>预测结果为：[0 0 1 0 1 1 1 1 1 0 0 1 0 0 1 0 1 0 0 1]
+真实结果为：[0 0 1 0 1 1 1 1 1 0 0 1 1 0 1 0 1 0 0 1]
+方差为：0.05</code></pre>
+<p>由上面我们可以看到，预测可以说几乎完全正确，不止是程序，这应该也是数据集比较精良的结果</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://i.328888.xyz/2023/04/14/i7ZQ6z.png" alt="overlook 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://i.328888.xyz/2023/04/14/i7ZYQw.jpeg" alt="overlook 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"># 数据分析</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/04/15/%E5%9B%BE%E5%BA%8A%E7%9A%84%E9%80%89%E5%8F%96/" rel="prev" title="图床的选取">
+                  <i class="fa fa-chevron-left"></i> 图床的选取
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">overlook</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

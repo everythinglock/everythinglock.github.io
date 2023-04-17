@@ -3,26 +3,38 @@
   <entry>
     <title>hexo&amp;theme-next配置指南</title>
     <url>/2023/04/14/hexo%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p><font color=yellowgreen size=3>文章中若不具体指出， <em>_config.yml</em> 均指在next主题下的文件，而不是博客根目录下的文件</font></p>
-<h4 id="如何找到教程"><a href="#如何找到教程" class="headerlink" title="如何找到教程"></a>如何找到教程</h4><p>github上的教程并不完全，可以直接google搜索theme-next得到next主题的完整教程或<a href="https://theme-next.js.org/">点击这里</a></p>
-<h4 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h4><h5 id="添加头像"><a href="#添加头像" class="headerlink" title="添加头像"></a>添加头像</h5><p>next主题默认是不会在侧边栏显示头像的，可以在 <em>_config.yml</em> 文件中找到 <em>avatar</em> ,修改配置</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">/images/avatar.gif</span></span><br></pre></td></tr></table></figure>
-<p>url中你可以像上方一样写本地文件地址，也可以将自己的图片上传到图床后直接添加连接，例如：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">https://th.bing.com/th/id/OIP.jqV24SltVY2PaD_DTB2KBQAAA?pid=ImgDet&amp;rs=1</span></span><br></pre></td></tr></table></figure>
-<p>以上链接是我直接在bing图库中复制网址得到的</p>
-<span id="more"></span>
-<h5 id="头像旋转，圆形"><a href="#头像旋转，圆形" class="headerlink" title="头像旋转，圆形"></a>头像旋转，圆形</h5><p> <em>_config.yml</em> 中分别配置 <em>rotated</em> 和 <em>rounded</em> 为 <em>true</em> 即可设置头像变为圆形，且鼠标放在头像时头像会旋转</p>
-<h4 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h4><p>虽然现在我的博文比较少，搜索功能还没用，但是当内容多起来后，搜索功能还是有用的，更重要的就是我想加上这个功能</p>
+    <content><![CDATA[<p><font color=yellowgreen size=3>文章中若不具体指出，
+<em>_config.yml</em>
+均指在next主题下的文件，而不是博客根目录下的文件</font></p>
+<h4 id="如何找到教程">如何找到教程</h4>
+<p>github上的教程并不完全，可以直接google搜索theme-next得到next主题的完整教程或<a
+href="https://theme-next.js.org/">点击这里</a></p>
+<h4 id="头像">头像</h4>
+<h5 id="添加头像">添加头像</h5>
+<p>next主题默认是不会在侧边栏显示头像的，可以在 <em>_config.yml</em>
+文件中找到 <em>avatar</em> ,修改配置 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">/images/avatar.gif</span></span><br></pre></td></tr></table></figure>
+url中你可以像上方一样写本地文件地址，也可以将自己的图片上传到图床后直接添加连接，例如：
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">https://th.bing.com/th/id/OIP.jqV24SltVY2PaD_DTB2KBQAAA?pid=ImgDet&amp;rs=1</span></span><br></pre></td></tr></table></figure> 以上链接是我直接在bing图库中复制网址得到的 <span id="more"></span>
+##### 头像旋转，圆形 <em>_config.yml</em> 中分别配置 <em>rotated</em> 和
+<em>rounded</em> 为 <em>true</em>
+即可设置头像变为圆形，且鼠标放在头像时头像会旋转</p>
+<h4 id="搜索功能">搜索功能</h4>
+<p>虽然现在我的博文比较少，搜索功能还没用，但是当内容多起来后，搜索功能还是有用的，更重要的就是我想加上这个功能</p>
 <ul>
-<li>先下载一个包，以此实现本地搜索功能  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure></li>
-<li>现在修改博客根目录下载 <em>_.config.yml</em> 文件，在底部添加（其他任意位置都行）：  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">    <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">    <span class="attr">content:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure></li>
-<li>最后修改 <em>_.config.yml</em> 文件，找到Local search部分：  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">trigger:</span> <span class="string">auto</span></span><br><span class="line">    <span class="attr">top_n_per_article:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">unescape:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">preload:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure></li>
+<li>先下载一个包，以此实现本地搜索功能 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure></li>
+<li>现在修改博客根目录下载 <em>_.config.yml</em>
+文件，在底部添加（其他任意位置都行）： <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">    <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">    <span class="attr">content:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure></li>
+<li>最后修改 <em>_.config.yml</em> 文件，找到Local search部分：
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">trigger:</span> <span class="string">auto</span></span><br><span class="line">    <span class="attr">top_n_per_article:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">unescape:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">preload:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="关联社交网站"><a href="#关联社交网站" class="headerlink" title="关联社交网站"></a>关联社交网站</h4><p>在 <em>_.config.yml</em> 文件中找到social部分，取消注释，并修改对应网址</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="attr">E-Mail:</span> <span class="string">mailto:yourname@gmail.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br><span class="line">  <span class="attr">Weibo:</span> <span class="string">https://weibo.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-weibo</span></span><br><span class="line">  <span class="attr">Twitter:</span> <span class="string">https://twitter.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-twitter</span></span><br><span class="line">  <span class="attr">FB Page:</span> <span class="string">https://www.facebook.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-facebook</span></span><br><span class="line">  <span class="attr">StackOverflow:</span> <span class="string">https://stackoverflow.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-stack-overflow</span></span><br><span class="line">  <span class="attr">YouTube:</span> <span class="string">https://youtube.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-youtube</span></span><br><span class="line">  <span class="attr">Instagram:</span> <span class="string">https://instagram.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-instagram</span></span><br><span class="line">  <span class="attr">Skype:</span> <span class="string">skype:yourname?call|chat</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-skype</span></span><br></pre></td></tr></table></figure>
-<p>|| 前面改成对应网址就行，|| 后面可以不管</p>
-<h4 id="修改网站图标"><a href="#修改网站图标" class="headerlink" title="修改网站图标"></a>修改网站图标</h4><p>网站图标就是标签页上的图标，next默认是一个N，想要修改需要在 <em>_config.yml</em> 中找到favicon，修改其中的url，small,medium都改，如：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">https://i.328888.xyz/2023/04/14/i7fYQX.png</span> </span><br><span class="line">  <span class="attr">medium:</span> <span class="string">https://i.328888.xyz/2023/04/14/i7fYQX.png</span></span><br></pre></td></tr></table></figure>
+<h4 id="关联社交网站">关联社交网站</h4>
+<p>在 <em>_.config.yml</em>
+文件中找到social部分，取消注释，并修改对应网址 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="attr">E-Mail:</span> <span class="string">mailto:yourname@gmail.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br><span class="line">  <span class="attr">Weibo:</span> <span class="string">https://weibo.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-weibo</span></span><br><span class="line">  <span class="attr">Twitter:</span> <span class="string">https://twitter.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-twitter</span></span><br><span class="line">  <span class="attr">FB Page:</span> <span class="string">https://www.facebook.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-facebook</span></span><br><span class="line">  <span class="attr">StackOverflow:</span> <span class="string">https://stackoverflow.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-stack-overflow</span></span><br><span class="line">  <span class="attr">YouTube:</span> <span class="string">https://youtube.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-youtube</span></span><br><span class="line">  <span class="attr">Instagram:</span> <span class="string">https://instagram.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-instagram</span></span><br><span class="line">  <span class="attr">Skype:</span> <span class="string">skype:yourname?call|chat</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-skype</span></span><br></pre></td></tr></table></figure> ||
+前面改成对应网址就行，|| 后面可以不管</p>
+<h4 id="修改网站图标">修改网站图标</h4>
+<p>网站图标就是标签页上的图标，next默认是一个N，想要修改需要在
+<em>_config.yml</em>
+中找到favicon，修改其中的url，small,medium都改，如： <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">https://i.328888.xyz/2023/04/14/i7fYQX.png</span> </span><br><span class="line">  <span class="attr">medium:</span> <span class="string">https://i.328888.xyz/2023/04/14/i7fYQX.png</span></span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>折腾</category>
@@ -35,384 +47,927 @@
     <title>python数据分析之预测学生成绩</title>
     <url>/2023/04/15/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E9%A2%84%E6%B5%8B%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
-
-<h1 id="获取资源"><a href="#获取资源" class="headerlink" title="获取资源"></a>获取资源</h1><p>文中引用的student-mat.csv文件获取可<a href="https://github.com/everythinglock/resource/blob/main/csv/student-mat.csv">点击这里</a>👈</p>
-<h1 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> ElasticNet</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVR</span><br><span class="line"><span class="keyword">import</span> pickle</span><br></pre></td></tr></table></figure>
+<h1 id="获取资源">获取资源</h1>
+<p>文中引用的student-mat.csv文件获取可<a
+href="https://github.com/everythinglock/resource/blob/main/csv/student-mat.csv">点击这里</a>👈</p>
+<h1 id="导入包">导入包</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> ElasticNet</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVR</span><br><span class="line"><span class="keyword">import</span> pickle</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-
-<h1 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h1><h2 id="利用pandas的库读取csv数据"><a href="#利用pandas的库读取csv数据" class="headerlink" title="利用pandas的库读取csv数据"></a>利用pandas的库读取csv数据</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">student = pd.read_csv(<span class="string">&#x27;student-mat.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="预览读取的数据"><a href="#预览读取的数据" class="headerlink" title="预览读取的数据"></a>预览读取的数据</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">student</span><br></pre></td></tr></table></figure>
-
-
-
-
+<h1 id="读取数据">读取数据</h1>
+<h2 id="利用pandas的库读取csv数据">利用pandas的库读取csv数据</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">student = pd.read_csv(<span class="string">&#x27;student-mat.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="预览读取的数据">预览读取的数据</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">student</span><br></pre></td></tr></table></figure>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
 
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>school</th>
-      <th>sex</th>
-      <th>age</th>
-      <th>address</th>
-      <th>famsize</th>
-      <th>Pstatus</th>
-      <th>Medu</th>
-      <th>Fedu</th>
-      <th>Mjob</th>
-      <th>Fjob</th>
-      <th>...</th>
-      <th>famrel</th>
-      <th>freetime</th>
-      <th>goout</th>
-      <th>Dalc</th>
-      <th>Walc</th>
-      <th>health</th>
-      <th>absences</th>
-      <th>G1</th>
-      <th>G2</th>
-      <th>G3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>GP</td>
-      <td>F</td>
-      <td>18</td>
-      <td>U</td>
-      <td>GT3</td>
-      <td>A</td>
-      <td>4</td>
-      <td>4</td>
-      <td>at_home</td>
-      <td>teacher</td>
-      <td>...</td>
-      <td>4</td>
-      <td>3</td>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>6</td>
-      <td>5</td>
-      <td>6</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>GP</td>
-      <td>F</td>
-      <td>17</td>
-      <td>U</td>
-      <td>GT3</td>
-      <td>T</td>
-      <td>1</td>
-      <td>1</td>
-      <td>at_home</td>
-      <td>other</td>
-      <td>...</td>
-      <td>5</td>
-      <td>3</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>GP</td>
-      <td>F</td>
-      <td>15</td>
-      <td>U</td>
-      <td>LE3</td>
-      <td>T</td>
-      <td>1</td>
-      <td>1</td>
-      <td>at_home</td>
-      <td>other</td>
-      <td>...</td>
-      <td>4</td>
-      <td>3</td>
-      <td>2</td>
-      <td>2</td>
-      <td>3</td>
-      <td>3</td>
-      <td>10</td>
-      <td>7</td>
-      <td>8</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>GP</td>
-      <td>F</td>
-      <td>15</td>
-      <td>U</td>
-      <td>GT3</td>
-      <td>T</td>
-      <td>4</td>
-      <td>2</td>
-      <td>health</td>
-      <td>services</td>
-      <td>...</td>
-      <td>3</td>
-      <td>2</td>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>5</td>
-      <td>2</td>
-      <td>15</td>
-      <td>14</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>GP</td>
-      <td>F</td>
-      <td>16</td>
-      <td>U</td>
-      <td>GT3</td>
-      <td>T</td>
-      <td>3</td>
-      <td>3</td>
-      <td>other</td>
-      <td>other</td>
-      <td>...</td>
-      <td>4</td>
-      <td>3</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-      <td>5</td>
-      <td>4</td>
-      <td>6</td>
-      <td>10</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>390</th>
-      <td>MS</td>
-      <td>M</td>
-      <td>20</td>
-      <td>U</td>
-      <td>LE3</td>
-      <td>A</td>
-      <td>2</td>
-      <td>2</td>
-      <td>services</td>
-      <td>services</td>
-      <td>...</td>
-      <td>5</td>
-      <td>5</td>
-      <td>4</td>
-      <td>4</td>
-      <td>5</td>
-      <td>4</td>
-      <td>11</td>
-      <td>9</td>
-      <td>9</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>391</th>
-      <td>MS</td>
-      <td>M</td>
-      <td>17</td>
-      <td>U</td>
-      <td>LE3</td>
-      <td>T</td>
-      <td>3</td>
-      <td>1</td>
-      <td>services</td>
-      <td>services</td>
-      <td>...</td>
-      <td>2</td>
-      <td>4</td>
-      <td>5</td>
-      <td>3</td>
-      <td>4</td>
-      <td>2</td>
-      <td>3</td>
-      <td>14</td>
-      <td>16</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>392</th>
-      <td>MS</td>
-      <td>M</td>
-      <td>21</td>
-      <td>R</td>
-      <td>GT3</td>
-      <td>T</td>
-      <td>1</td>
-      <td>1</td>
-      <td>other</td>
-      <td>other</td>
-      <td>...</td>
-      <td>5</td>
-      <td>5</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>10</td>
-      <td>8</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>393</th>
-      <td>MS</td>
-      <td>M</td>
-      <td>18</td>
-      <td>R</td>
-      <td>LE3</td>
-      <td>T</td>
-      <td>3</td>
-      <td>2</td>
-      <td>services</td>
-      <td>other</td>
-      <td>...</td>
-      <td>4</td>
-      <td>4</td>
-      <td>1</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>0</td>
-      <td>11</td>
-      <td>12</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>394</th>
-      <td>MS</td>
-      <td>M</td>
-      <td>19</td>
-      <td>U</td>
-      <td>LE3</td>
-      <td>T</td>
-      <td>1</td>
-      <td>1</td>
-      <td>other</td>
-      <td>at_home</td>
-      <td>...</td>
-      <td>3</td>
-      <td>2</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>5</td>
-      <td>5</td>
-      <td>8</td>
-      <td>9</td>
-      <td>9</td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+school
+</th>
+<th>
+sex
+</th>
+<th>
+age
+</th>
+<th>
+address
+</th>
+<th>
+famsize
+</th>
+<th>
+Pstatus
+</th>
+<th>
+Medu
+</th>
+<th>
+Fedu
+</th>
+<th>
+Mjob
+</th>
+<th>
+Fjob
+</th>
+<th>
+...
+</th>
+<th>
+famrel
+</th>
+<th>
+freetime
+</th>
+<th>
+goout
+</th>
+<th>
+Dalc
+</th>
+<th>
+Walc
+</th>
+<th>
+health
+</th>
+<th>
+absences
+</th>
+<th>
+G1
+</th>
+<th>
+G2
+</th>
+<th>
+G3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+GP
+</td>
+<td>
+F
+</td>
+<td>
+18
+</td>
+<td>
+U
+</td>
+<td>
+GT3
+</td>
+<td>
+A
+</td>
+<td>
+4
+</td>
+<td>
+4
+</td>
+<td>
+at_home
+</td>
+<td>
+teacher
+</td>
+<td>
+...
+</td>
+<td>
+4
+</td>
+<td>
+3
+</td>
+<td>
+4
+</td>
+<td>
+1
+</td>
+<td>
+1
+</td>
+<td>
+3
+</td>
+<td>
+6
+</td>
+<td>
+5
+</td>
+<td>
+6
+</td>
+<td>
+6
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+GP
+</td>
+<td>
+F
+</td>
+<td>
+17
+</td>
+<td>
+U
+</td>
+<td>
+GT3
+</td>
+<td>
+T
+</td>
+<td>
+1
+</td>
+<td>
+1
+</td>
+<td>
+at_home
+</td>
+<td>
+other
+</td>
+<td>
+...
+</td>
+<td>
+5
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+1
+</td>
+<td>
+1
+</td>
+<td>
+3
+</td>
+<td>
+4
+</td>
+<td>
+5
+</td>
+<td>
+5
+</td>
+<td>
+6
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+GP
+</td>
+<td>
+F
+</td>
+<td>
+15
+</td>
+<td>
+U
+</td>
+<td>
+LE3
+</td>
+<td>
+T
+</td>
+<td>
+1
+</td>
+<td>
+1
+</td>
+<td>
+at_home
+</td>
+<td>
+other
+</td>
+<td>
+...
+</td>
+<td>
+4
+</td>
+<td>
+3
+</td>
+<td>
+2
+</td>
+<td>
+2
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+10
+</td>
+<td>
+7
+</td>
+<td>
+8
+</td>
+<td>
+10
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+GP
+</td>
+<td>
+F
+</td>
+<td>
+15
+</td>
+<td>
+U
+</td>
+<td>
+GT3
+</td>
+<td>
+T
+</td>
+<td>
+4
+</td>
+<td>
+2
+</td>
+<td>
+health
+</td>
+<td>
+services
+</td>
+<td>
+...
+</td>
+<td>
+3
+</td>
+<td>
+2
+</td>
+<td>
+2
+</td>
+<td>
+1
+</td>
+<td>
+1
+</td>
+<td>
+5
+</td>
+<td>
+2
+</td>
+<td>
+15
+</td>
+<td>
+14
+</td>
+<td>
+15
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+GP
+</td>
+<td>
+F
+</td>
+<td>
+16
+</td>
+<td>
+U
+</td>
+<td>
+GT3
+</td>
+<td>
+T
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+other
+</td>
+<td>
+other
+</td>
+<td>
+...
+</td>
+<td>
+4
+</td>
+<td>
+3
+</td>
+<td>
+2
+</td>
+<td>
+1
+</td>
+<td>
+2
+</td>
+<td>
+5
+</td>
+<td>
+4
+</td>
+<td>
+6
+</td>
+<td>
+10
+</td>
+<td>
+10
+</td>
+</tr>
+<tr>
+<th>
+...
+</th>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+...
+</td>
+</tr>
+<tr>
+<th>
+390
+</th>
+<td>
+MS
+</td>
+<td>
+M
+</td>
+<td>
+20
+</td>
+<td>
+U
+</td>
+<td>
+LE3
+</td>
+<td>
+A
+</td>
+<td>
+2
+</td>
+<td>
+2
+</td>
+<td>
+services
+</td>
+<td>
+services
+</td>
+<td>
+...
+</td>
+<td>
+5
+</td>
+<td>
+5
+</td>
+<td>
+4
+</td>
+<td>
+4
+</td>
+<td>
+5
+</td>
+<td>
+4
+</td>
+<td>
+11
+</td>
+<td>
+9
+</td>
+<td>
+9
+</td>
+<td>
+9
+</td>
+</tr>
+<tr>
+<th>
+391
+</th>
+<td>
+MS
+</td>
+<td>
+M
+</td>
+<td>
+17
+</td>
+<td>
+U
+</td>
+<td>
+LE3
+</td>
+<td>
+T
+</td>
+<td>
+3
+</td>
+<td>
+1
+</td>
+<td>
+services
+</td>
+<td>
+services
+</td>
+<td>
+...
+</td>
+<td>
+2
+</td>
+<td>
+4
+</td>
+<td>
+5
+</td>
+<td>
+3
+</td>
+<td>
+4
+</td>
+<td>
+2
+</td>
+<td>
+3
+</td>
+<td>
+14
+</td>
+<td>
+16
+</td>
+<td>
+16
+</td>
+</tr>
+<tr>
+<th>
+392
+</th>
+<td>
+MS
+</td>
+<td>
+M
+</td>
+<td>
+21
+</td>
+<td>
+R
+</td>
+<td>
+GT3
+</td>
+<td>
+T
+</td>
+<td>
+1
+</td>
+<td>
+1
+</td>
+<td>
+other
+</td>
+<td>
+other
+</td>
+<td>
+...
+</td>
+<td>
+5
+</td>
+<td>
+5
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+10
+</td>
+<td>
+8
+</td>
+<td>
+7
+</td>
+</tr>
+<tr>
+<th>
+393
+</th>
+<td>
+MS
+</td>
+<td>
+M
+</td>
+<td>
+18
+</td>
+<td>
+R
+</td>
+<td>
+LE3
+</td>
+<td>
+T
+</td>
+<td>
+3
+</td>
+<td>
+2
+</td>
+<td>
+services
+</td>
+<td>
+other
+</td>
+<td>
+...
+</td>
+<td>
+4
+</td>
+<td>
+4
+</td>
+<td>
+1
+</td>
+<td>
+3
+</td>
+<td>
+4
+</td>
+<td>
+5
+</td>
+<td>
+0
+</td>
+<td>
+11
+</td>
+<td>
+12
+</td>
+<td>
+10
+</td>
+</tr>
+<tr>
+<th>
+394
+</th>
+<td>
+MS
+</td>
+<td>
+M
+</td>
+<td>
+19
+</td>
+<td>
+U
+</td>
+<td>
+LE3
+</td>
+<td>
+T
+</td>
+<td>
+1
+</td>
+<td>
+1
+</td>
+<td>
+other
+</td>
+<td>
+at_home
+</td>
+<td>
+...
+</td>
+<td>
+3
+</td>
+<td>
+2
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+5
+</td>
+<td>
+5
+</td>
+<td>
+8
+</td>
+<td>
+9
+</td>
+<td>
+9
+</td>
+</tr>
+</tbody>
 </table>
-<p>395 rows × 33 columns</p>
+<p>
+395 rows × 33 columns
+</p>
 </div>
-
-
-
-<h1 id="使用图表分析属性"><a href="#使用图表分析属性" class="headerlink" title="使用图表分析属性"></a>使用图表分析属性</h1><p>进行回归分析时，我们要大概了解每个特征对结果的影响，故我们对各个特征值分别进行分析</p>
-<p>但我们不使用两次测验的成绩预测最终成绩，显然以前成绩好的以后考试分数高的概率大，我们希望得到<br>更有意义的结果</p>
-<h2 id="对学生的最终得分情况按出现次数进行汇总排序"><a href="#对学生的最终得分情况按出现次数进行汇总排序" class="headerlink" title="对学生的最终得分情况按出现次数进行汇总排序"></a>对学生的最终得分情况按出现次数进行汇总排序</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grade_counts = student[<span class="string">&#x27;G3&#x27;</span>].value_counts().sort_values().plot.barh(width=<span class="number">0.8</span>)</span><br><span class="line">grade_counts.axes.set_title(<span class="string">&quot;distribution of score&quot;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line">grade_counts.set_xlabel(<span class="string">&quot;number of student&quot;</span>, fontsize=<span class="number">14</span>)</span><br><span class="line">grade_counts.set_ylabel(<span class="string">&quot;final score&quot;</span>, fontsize=<span class="number">14</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>Text(0, 0.5, &#39;final score&#39;)
-</code></pre>
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_10_1.png" alt="png"></p>
-<h2 id="学生成绩分布直方图"><a href="#学生成绩分布直方图" class="headerlink" title="学生成绩分布直方图"></a>学生成绩分布直方图</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.gca().xaxis.set_major_locator(plt.MultipleLocator(<span class="number">1</span>))</span><br><span class="line">plt.hist(student[<span class="string">&quot;G3&quot;</span>], bins=<span class="number">50</span>, edgecolor=<span class="string">&quot;black&quot;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;score&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;number&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_12_0.png" alt="png"></p>
+<h1 id="使用图表分析属性">使用图表分析属性</h1>
+<p>进行回归分析时，我们要大概了解每个特征对结果的影响，故我们对各个特征值分别进行分析</p>
+<p>但我们不使用两次测验的成绩预测最终成绩，显然以前成绩好的以后考试分数高的概率大，我们希望得到
+更有意义的结果</p>
+<h2
+id="对学生的最终得分情况按出现次数进行汇总排序">对学生的最终得分情况按出现次数进行汇总排序</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grade_counts = student[<span class="string">&#x27;G3&#x27;</span>].value_counts().sort_values().plot.barh(width=<span class="number">0.8</span>)</span><br><span class="line">grade_counts.axes.set_title(<span class="string">&quot;distribution of score&quot;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line">grade_counts.set_xlabel(<span class="string">&quot;number of student&quot;</span>, fontsize=<span class="number">14</span>)</span><br><span class="line">grade_counts.set_ylabel(<span class="string">&quot;final score&quot;</span>, fontsize=<span class="number">14</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0, 0.5, &#39;final score&#39;)</code></pre>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_10_1.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
+<h2 id="学生成绩分布直方图">学生成绩分布直方图</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.gca().xaxis.set_major_locator(plt.MultipleLocator(<span class="number">1</span>))</span><br><span class="line">plt.hist(student[<span class="string">&quot;G3&quot;</span>], bins=<span class="number">50</span>, edgecolor=<span class="string">&quot;black&quot;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;score&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;number&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_12_0.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
 <p>一旦去掉0分，可以认为和正态分布有较高的相似度</p>
 <p>加上0分的，整张图完全不符合正态分布，且得分为1,2,3的人直接断层，严重怀疑0分不是单纯的考试成绩</p>
-<h2 id="分析年龄的影响"><a href="#分析年龄的影响" class="headerlink" title="分析年龄的影响"></a>分析年龄的影响</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.hist(student[<span class="string">&quot;age&quot;</span>], bins=<span class="number">20</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;age&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;number&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_15_0.png" alt="png"></p>
+<h2 id="分析年龄的影响">分析年龄的影响</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.hist(student[<span class="string">&quot;age&quot;</span>], bins=<span class="number">20</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;age&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;number&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_15_0.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
 <p>可以得出年龄集中在15～19,但是很难再得到什么有价值的信息</p>
-<h2 id="尝试将性别和最终成绩一起分析"><a href="#尝试将性别和最终成绩一起分析" class="headerlink" title="尝试将性别和最终成绩一起分析"></a>尝试将性别和最终成绩一起分析</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">female = student[student[<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;F&quot;</span>][<span class="string">&quot;G3&quot;</span>]</span><br><span class="line">male = student[student[<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;M&quot;</span>][<span class="string">&quot;G3&quot;</span>]</span><br><span class="line">error = np.<span class="built_in">abs</span>(female - male)</span><br><span class="line">labels = [<span class="string">&quot;female&quot;</span>, <span class="string">&quot;male&quot;</span>]</span><br><span class="line">plt.hist([female, male], bins=<span class="number">5</span>, label=labels)</span><br><span class="line">plt.xlabel(<span class="string">&quot;score&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;number&quot;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_18_0.png" alt="png"></p>
+<h2 id="尝试将性别和最终成绩一起分析">尝试将性别和最终成绩一起分析</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">female = student[student[<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;F&quot;</span>][<span class="string">&quot;G3&quot;</span>]</span><br><span class="line">male = student[student[<span class="string">&quot;sex&quot;</span>] == <span class="string">&quot;M&quot;</span>][<span class="string">&quot;G3&quot;</span>]</span><br><span class="line">error = np.<span class="built_in">abs</span>(female - male)</span><br><span class="line">labels = [<span class="string">&quot;female&quot;</span>, <span class="string">&quot;male&quot;</span>]</span><br><span class="line">plt.hist([female, male], bins=<span class="number">5</span>, label=labels)</span><br><span class="line">plt.xlabel(<span class="string">&quot;score&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;number&quot;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_18_0.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
 <p>这证实性别和成绩没什么大关系</p>
-<h2 id="将年龄和最终成绩一起分析"><a href="#将年龄和最终成绩一起分析" class="headerlink" title="将年龄和最终成绩一起分析"></a>将年龄和最终成绩一起分析</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.boxplot(student, x=<span class="string">&quot;age&quot;</span>, y=<span class="string">&quot;G3&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&lt;Axes: xlabel=&#39;age&#39;, ylabel=&#39;G3&#39;&gt;
-</code></pre>
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_21_1.png" alt="png"></p>
-<p>可以看出，除了20岁的人（人少的可怜）的分数确实高于其他年龄段的，年龄对成绩的平均数可以说没有什么影响，但是确实有缓慢下降的趋势<br>，毕竟年龄提升后课程难度也会加大。</p>
-<h2 id="居住地对成绩的影响分析"><a href="#居住地对成绩的影响分析" class="headerlink" title="居住地对成绩的影响分析"></a>居住地对成绩的影响分析</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x1 = student.loc[student[<span class="string">&quot;address&quot;</span>] == <span class="string">&quot;U&quot;</span>, <span class="string">&quot;G3&quot;</span>] <span class="comment">#城市</span></span><br><span class="line">x2 = student.loc[student[<span class="string">&quot;address&quot;</span>] == <span class="string">&quot;R&quot;</span>, <span class="string">&quot;G3&quot;</span>] <span class="comment">#农村</span></span><br><span class="line">sns.kdeplot(x1)</span><br><span class="line">sns.kdeplot(x2)</span><br><span class="line">plt.legend([<span class="string">&quot;urban&quot;</span>, <span class="string">&quot;rural&quot;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&quot;final score&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;rate&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_24_0.png" alt="png"></p>
+<h2 id="将年龄和最终成绩一起分析">将年龄和最终成绩一起分析</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.boxplot(student, x=<span class="string">&quot;age&quot;</span>, y=<span class="string">&quot;G3&quot;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;Axes: xlabel=&#39;age&#39;, ylabel=&#39;G3&#39;&gt;</code></pre>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_21_1.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
+<p>可以看出，除了20岁的人（人少的可怜）的分数确实高于其他年龄段的，年龄对成绩的平均数可以说没有什么影响，但是确实有缓慢下降的趋势
+，毕竟年龄提升后课程难度也会加大。</p>
+<h2 id="居住地对成绩的影响分析">居住地对成绩的影响分析</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x1 = student.loc[student[<span class="string">&quot;address&quot;</span>] == <span class="string">&quot;U&quot;</span>, <span class="string">&quot;G3&quot;</span>] <span class="comment">#城市</span></span><br><span class="line">x2 = student.loc[student[<span class="string">&quot;address&quot;</span>] == <span class="string">&quot;R&quot;</span>, <span class="string">&quot;G3&quot;</span>] <span class="comment">#农村</span></span><br><span class="line">sns.kdeplot(x1)</span><br><span class="line">sns.kdeplot(x2)</span><br><span class="line">plt.legend([<span class="string">&quot;urban&quot;</span>, <span class="string">&quot;rural&quot;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&quot;final score&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;rate&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_24_0.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
 <p>看的出来，几乎没有影响</p>
-<h1 id="相关度的计算"><a href="#相关度的计算" class="headerlink" title="相关度的计算"></a>相关度的计算</h1><h2 id="使用欧几里德距离计算相关性"><a href="#使用欧几里德距离计算相关性" class="headerlink" title="使用欧几里德距离计算相关性"></a>使用欧几里德距离计算相关性</h2><p>我已经逐个分析了性别和年龄的影响，接下来我将对相关型进行计算</p>
+<h1 id="相关度的计算">相关度的计算</h1>
+<h2 id="使用欧几里德距离计算相关性">使用欧几里德距离计算相关性</h2>
+<p>我已经逐个分析了性别和年龄的影响，接下来我将对相关型进行计算</p>
 <p>其实导入的包里面就有这个函数，但是为了更好的理解原理，我决定手写一下</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">EuclideanDistance</span>(<span class="params">feature1, feature2</span>):</span><br><span class="line">    <span class="comment">#特征缩放</span></span><br><span class="line">    feature1 = feature1.astype(np.float32)</span><br><span class="line">    feature2 = feature2.astype(np.float32)</span><br><span class="line">    feature1_mean = np.mean(feature1)</span><br><span class="line">    feature2_mean = np.mean(feature2)</span><br><span class="line">    feature1 -= feature1_mean</span><br><span class="line">    feature2 -= feature2_mean</span><br><span class="line"></span><br><span class="line">    <span class="comment">#计算平方和</span></span><br><span class="line">    square = (feature1 - feature2) ** <span class="number">2</span></span><br><span class="line">    sum_square = np.<span class="built_in">sum</span>(square)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#计算相关性</span></span><br><span class="line">    result = <span class="number">1</span>/(<span class="number">1</span>+np.sqrt(sum_square)) *<span class="number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">number = <span class="built_in">list</span>()</span><br><span class="line"></span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;failures&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;age&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;goout&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;traveltime&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;health&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;Dalc&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;Walc&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;freetime&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;absences&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;famrel&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;studytime&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;Fedu&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;Medu&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;goout&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line">number.append(EuclideanDistance(student[<span class="string">&quot;famrel&quot;</span>], student[<span class="string">&quot;G3&quot;</span>]))</span><br><span class="line"><span class="built_in">print</span>(np.argsort(number)[::-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-
-<pre><code>[12 11 10 14  9  7  3  5  6 13  2  4  0  1  8]
-</code></pre>
+<pre><code>[12 11 10 14  9  7  3  5  6 13  2  4  0  1  8]</code></pre>
 <p>除了不是用数值表示的特征，我都用欧几里德距离进行了计算，排序得出Medu,Fedu,studytime,famrel对最终成绩影响最大,</p>
-<h2 id="皮尔逊相关度"><a href="#皮尔逊相关度" class="headerlink" title="皮尔逊相关度"></a>皮尔逊相关度</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">student.corr(method=<span class="string">&quot;pearson&quot;</span>, numeric_only=<span class="literal">True</span>)[<span class="string">&quot;G3&quot;</span>].sort_values()[::-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
+<h2 id="皮尔逊相关度">皮尔逊相关度</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">student.corr(method=<span class="string">&quot;pearson&quot;</span>, numeric_only=<span class="literal">True</span>)[<span class="string">&quot;G3&quot;</span>].sort_values()[::-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
 <pre><code>G3            1.000000
 G2            0.904868
 G1            0.801468
@@ -429,33 +984,30 @@ traveltime   -0.117142
 goout        -0.132791
 age          -0.161579
 failures     -0.360415
-Name: G3, dtype: float64
-</code></pre>
-<p>可以看出皮尔逊相关度和我上面写的欧几里德距离评价得到的结果差不多，都是Medu,Fedu,studytime,famrel相关度最大<br>（G2,G1)不作考虑</p>
+Name: G3, dtype: float64</code></pre>
+<p>可以看出皮尔逊相关度和我上面写的欧几里德距离评价得到的结果差不多，都是Medu,Fedu,studytime,famrel相关度最大
+（G2,G1)不作考虑</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.boxplot(student, x=<span class="string">&quot;Medu&quot;</span>, y=<span class="string">&quot;G3&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&lt;Axes: xlabel=&#39;Medu&#39;, ylabel=&#39;G3&#39;&gt;
-</code></pre>
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_34_1.png" alt="png"></p>
+<pre><code>&lt;Axes: xlabel=&#39;Medu&#39;, ylabel=&#39;G3&#39;&gt;</code></pre>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_34_1.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = student[<span class="string">&quot;Medu&quot;</span>][<span class="number">0</span>:<span class="number">300</span>]</span><br><span class="line">y = student[<span class="string">&quot;G3&quot;</span>][<span class="number">0</span>:<span class="number">300</span>]</span><br><span class="line">sns.swarmplot(x=x, y=y)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&lt;Axes: xlabel=&#39;Medu&#39;, ylabel=&#39;G3&#39;&gt;
-</code></pre>
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_35_1.png" alt="png"></p>
-<p>从上面两张箱线图可以看出，派出Medu&#x3D;0的极少数情况，随着Medu的增加，学生的得分区间也在逐渐上升，猜想正确</p>
+<pre><code>&lt;Axes: xlabel=&#39;Medu&#39;, ylabel=&#39;G3&#39;&gt;</code></pre>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_35_1.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
+<p>从上面两张箱线图可以看出，派出Medu=0的极少数情况，随着Medu的增加，学生的得分区间也在逐渐上升，猜想正确</p>
 <p>但是我们还需要处理非数值数据</p>
-<h2 id="独热编码"><a href="#独热编码" class="headerlink" title="独热编码"></a>独热编码</h2><p>要处理非数值的数据，独热编码是一个不错的方法</p>
+<h2 id="独热编码">独热编码</h2>
+<p>要处理非数值的数据，独热编码是一个不错的方法</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">student = pd.read_csv(<span class="string">&quot;student-mat.csv&quot;</span>)</span><br><span class="line">features = student[<span class="string">&quot;G3&quot;</span>]</span><br><span class="line">student = student.drop([<span class="string">&quot;G1&quot;</span>, <span class="string">&quot;G2&quot;</span>], axis=<span class="string">&quot;columns&quot;</span>)</span><br><span class="line">student = pd.get_dummies(student)</span><br><span class="line">most_correlated = student.corr()[<span class="string">&quot;G3&quot;</span>].<span class="built_in">abs</span>().sort_values(ascending=<span class="literal">False</span>)[:<span class="number">8</span>]</span><br><span class="line">most_correlated</span><br></pre></td></tr></table></figure>
-
-
-
-
 <pre><code>G3            1.000000
 failures      0.360415
 Medu          0.217147
@@ -464,41 +1016,46 @@ higher_no     0.182465
 age           0.161579
 Fedu          0.152457
 goout         0.132791
-Name: G3, dtype: float64
-</code></pre>
+Name: G3, dtype: float64</code></pre>
 <p>在使用独热编码后，计算其相关度，并取出相关度最大的8个,除去G3本身，分别为failures,Medu,higher_yes,higher_no,age,Fedu,goout</p>
 <p>现在进行验证</p>
-<h2 id="失败次数对最终成绩的影响"><a href="#失败次数对最终成绩的影响" class="headerlink" title="失败次数对最终成绩的影响"></a>失败次数对最终成绩的影响</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">failures_boxenplot = sns.boxenplot(student, x=<span class="string">&quot;failures&quot;</span>, y=<span class="string">&quot;G3&quot;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;number of failures&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;final score&quot;</span>)</span><br><span class="line">plt.title(<span class="string">&quot;How the number of failures affects the final score&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_42_0.png" alt="png"></p>
+<h2 id="失败次数对最终成绩的影响">失败次数对最终成绩的影响</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">failures_boxenplot = sns.boxenplot(student, x=<span class="string">&quot;failures&quot;</span>, y=<span class="string">&quot;G3&quot;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;number of failures&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;final score&quot;</span>)</span><br><span class="line">plt.title(<span class="string">&quot;How the number of failures affects the final score&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_42_0.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
 <p>由此可见，分数随着失败次数的增加而减少</p>
-<h2 id="双亲受教育程度对最终成绩的影响"><a href="#双亲受教育程度对最终成绩的影响" class="headerlink" title="双亲受教育程度对最终成绩的影响"></a>双亲受教育程度对最终成绩的影响</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parent_ed = student[<span class="string">&quot;Fedu&quot;</span>] + student[<span class="string">&quot;Medu&quot;</span>]</span><br><span class="line">sns.boxenplot(student, x=parent_ed, y=<span class="string">&quot;G3&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&lt;Axes: ylabel=&#39;G3&#39;&gt;
-</code></pre>
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_45_1.png" alt="png"></p>
+<h2
+id="双亲受教育程度对最终成绩的影响">双亲受教育程度对最终成绩的影响</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parent_ed = student[<span class="string">&quot;Fedu&quot;</span>] + student[<span class="string">&quot;Medu&quot;</span>]</span><br><span class="line">sns.boxenplot(student, x=parent_ed, y=<span class="string">&quot;G3&quot;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;Axes: ylabel=&#39;G3&#39;&gt;</code></pre>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_45_1.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
 <p>可以看出随着父母受教育程度上升，最终成绩的平均值在上升，得分区间也在升高</p>
-<h2 id="升学意愿对成绩的影响"><a href="#升学意愿对成绩的影响" class="headerlink" title="升学意愿对成绩的影响"></a>升学意愿对成绩的影响</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.boxenplot(student, x=<span class="string">&quot;higher_yes&quot;</span>, y=<span class="string">&quot;G3&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&lt;Axes: xlabel=&#39;higher_yes&#39;, ylabel=&#39;G3&#39;&gt;
-</code></pre>
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_48_1.png" alt="png"></p>
+<h2 id="升学意愿对成绩的影响">升学意愿对成绩的影响</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.boxenplot(student, x=<span class="string">&quot;higher_yes&quot;</span>, y=<span class="string">&quot;G3&quot;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;Axes: xlabel=&#39;higher_yes&#39;, ylabel=&#39;G3&#39;&gt;</code></pre>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_48_1.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
 <p>显然有升学意愿的人成绩更高</p>
-<h1 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h1><h2 id="均方根误差，平均绝对误差"><a href="#均方根误差，平均绝对误差" class="headerlink" title="均方根误差，平均绝对误差"></a>均方根误差，平均绝对误差</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate_predictions</span>(<span class="params">y_hat, y</span>): </span><br><span class="line">    mae = np.mean(<span class="built_in">abs</span>(y_hat - y)) </span><br><span class="line">    rmse = np.sqrt(np.mean((y_hat - y) ** <span class="number">2</span>)) </span><br><span class="line">    <span class="keyword">return</span> mae, rmse </span><br></pre></td></tr></table></figure>
-
-<h2 id="先单独计算线性回归误差"><a href="#先单独计算线性回归误差" class="headerlink" title="先单独计算线性回归误差"></a>先单独计算线性回归误差</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y = student.loc[:, <span class="string">&quot;G3&quot;</span>]</span><br><span class="line">x = student.drop(<span class="string">&quot;G3&quot;</span>, axis=<span class="string">&quot;columns&quot;</span>)</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">123456</span>) <span class="comment">#固定种子</span></span><br><span class="line">model1 = LinearRegression()</span><br><span class="line">model1.fit(X_train, y_train)</span><br><span class="line">y_hat = model1.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="comment">#误差计算</span></span><br><span class="line">mae = np.mean(<span class="built_in">abs</span>(y_hat - y_test))</span><br><span class="line">rmse = np.sqrt(np.mean((y_hat - y_test) ** <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(mae, rmse)</span><br></pre></td></tr></table></figure>
-
-<pre><code>3.5537271620352056 4.705178887709819
-</code></pre>
+<h1 id="模型训练">模型训练</h1>
+<h2 id="均方根误差平均绝对误差">均方根误差，平均绝对误差</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate_predictions</span>(<span class="params">y_hat, y</span>): </span><br><span class="line">    mae = np.mean(<span class="built_in">abs</span>(y_hat - y)) </span><br><span class="line">    rmse = np.sqrt(np.mean((y_hat - y) ** <span class="number">2</span>)) </span><br><span class="line">    <span class="keyword">return</span> mae, rmse </span><br></pre></td></tr></table></figure>
+<h2 id="先单独计算线性回归误差">先单独计算线性回归误差</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y = student.loc[:, <span class="string">&quot;G3&quot;</span>]</span><br><span class="line">x = student.drop(<span class="string">&quot;G3&quot;</span>, axis=<span class="string">&quot;columns&quot;</span>)</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">123456</span>) <span class="comment">#固定种子</span></span><br><span class="line">model1 = LinearRegression()</span><br><span class="line">model1.fit(X_train, y_train)</span><br><span class="line">y_hat = model1.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="comment">#误差计算</span></span><br><span class="line">mae = np.mean(<span class="built_in">abs</span>(y_hat - y_test))</span><br><span class="line">rmse = np.sqrt(np.mean((y_hat - y_test) ** <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(mae, rmse)</span><br></pre></td></tr></table></figure>
+<pre><code>3.5537271620352056 4.705178887709819</code></pre>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通过训练集训练和测试集测试来生成多个线性模型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate</span>(<span class="params">X_train, X_test, y_train, y_test</span>):</span><br><span class="line">    <span class="comment"># 模型名称</span></span><br><span class="line">    model_name_list = [<span class="string">&#x27;Linear Regression&#x27;</span>, <span class="string">&#x27;ElasticNet Regression&#x27;</span>,</span><br><span class="line">                      <span class="string">&#x27;Random Forest&#x27;</span>, <span class="string">&#x27;Extra Trees&#x27;</span>, <span class="string">&#x27;SVM&#x27;</span>,</span><br><span class="line">                       <span class="string">&#x27;Gradient Boosted&#x27;</span>, <span class="string">&#x27;Baseline&#x27;</span>]</span><br><span class="line">    <span class="comment"># 实例化模型</span></span><br><span class="line">    model1 = LinearRegression()</span><br><span class="line">    model2 = ElasticNet(alpha=<span class="number">1.0</span>, l1_ratio=<span class="number">0.5</span>)</span><br><span class="line">    model3 = RandomForestRegressor(n_estimators=<span class="number">100</span>)</span><br><span class="line">    model4 = ExtraTreesRegressor(n_estimators=<span class="number">100</span>)</span><br><span class="line">    model5 = SVR(kernel=<span class="string">&#x27;rbf&#x27;</span>, degree=<span class="number">3</span>, C=<span class="number">1.0</span>, gamma=<span class="string">&#x27;auto&#x27;</span>)</span><br><span class="line">    model6 = GradientBoostingRegressor(n_estimators=<span class="number">50</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 结果数据框</span></span><br><span class="line">    results = pd.DataFrame(columns=[<span class="string">&#x27;mae&#x27;</span>, <span class="string">&#x27;rmse&#x27;</span>], index = model_name_list)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 每种模型的训练和预测</span></span><br><span class="line">    <span class="keyword">for</span> i, model <span class="keyword">in</span> <span class="built_in">enumerate</span>([model1, model2, model3, model4, model5, model6]):</span><br><span class="line">        model.fit(X_train, y_train)</span><br><span class="line">        predictions = model.predict(X_test)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 误差标准</span></span><br><span class="line">        mae = np.mean(<span class="built_in">abs</span>(predictions - y_test))</span><br><span class="line">        rmse = np.sqrt(np.mean((predictions - y_test) ** <span class="number">2</span>))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 将结果插入结果框</span></span><br><span class="line">        model_name = model_name_list[i]</span><br><span class="line">        results.loc[model_name, :] = [mae, rmse]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 中值基准度量</span></span><br><span class="line">    baseline = np.median(y_train)</span><br><span class="line">    baseline_mae = np.mean(<span class="built_in">abs</span>(baseline - y_test))</span><br><span class="line">    baseline_rmse = np.sqrt(np.mean((baseline - y_test) ** <span class="number">2</span>))</span><br><span class="line">    </span><br><span class="line">    results.loc[<span class="string">&#x27;Baseline&#x27;</span>, :] = [baseline_mae, baseline_rmse]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> results</span><br><span class="line">results = evaluate(X_train, X_test, y_train, y_test)</span><br><span class="line"><span class="built_in">print</span>(results)</span><br></pre></td></tr></table></figure>
-
 <pre><code>                            mae      rmse
 Linear Regression      3.553727  4.705179
 ElasticNet Regression   3.48858  4.636734
@@ -506,23 +1063,21 @@ Random Forest          3.074177  4.177558
 Extra Trees            3.506835  4.525027
 SVM                    3.409255  4.629435
 Gradient Boosted        3.18642  4.280975
-Baseline               3.607595  4.902854
-</code></pre>
+Baseline               3.607595  4.902854</code></pre>
 <p>通过上方代码计算出了各种模型的误差,接下来可视化误差的大小，挑选最合适的模型</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 找出最合适的模型</span></span><br><span class="line">plt.figure(figsize=(<span class="number">12</span>, <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 平均绝对误差</span></span><br><span class="line">ax =  plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">results.sort_values(<span class="string">&#x27;mae&#x27;</span>, ascending = <span class="literal">True</span>).plot.bar(y = <span class="string">&#x27;mae&#x27;</span>, color = <span class="string">&#x27;b&#x27;</span>, ax = ax, fontsize=<span class="number">20</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;error&#x27;</span>, fontsize=<span class="number">20</span>) </span><br><span class="line">plt.ylabel(<span class="string">&#x27;MAE&#x27;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 均方根误差</span></span><br><span class="line">ax = plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">results.sort_values(<span class="string">&#x27;rmse&#x27;</span>, ascending = <span class="literal">True</span>).plot.bar(y = <span class="string">&#x27;rmse&#x27;</span>, color = <span class="string">&#x27;r&#x27;</span>, ax = ax, fontsize=<span class="number">20</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;error&#x27;</span>, fontsize=<span class="number">20</span>) </span><br><span class="line">plt.ylabel(<span class="string">&#x27;RMSE&#x27;</span>,fontsize=<span class="number">20</span>)</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_57_0.png" alt="png"></p>
-<p>最后我们发现，当训练集:测试集 &#x3D; 80%:20%时,random forest(随机森林)算法误差最小，故保存该算法为最终的模型,保存到文件中方便我们以后调用</p>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/Predict_student_achievement/output_57_0.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
+<p>最后我们发现，当训练集:测试集 = 80%:20%时,random
+forest(随机森林)算法误差最小，故保存该算法为最终的模型,保存到文件中方便我们以后调用</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model = RandomForestRegressor()</span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line">filename = <span class="string">&quot;final_model&quot;</span></span><br><span class="line">pickle.dump(model, <span class="built_in">open</span>(filename, <span class="string">&#x27;wb&#x27;</span>)) </span><br></pre></td></tr></table></figure>
-
-<h2 id="调用模型"><a href="#调用模型" class="headerlink" title="调用模型"></a>调用模型</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pickle_in = <span class="built_in">open</span>(<span class="string">&quot;final_model&quot;</span>, <span class="string">&quot;rb&quot;</span>)</span><br><span class="line">clf = pickle.load(pickle_in)</span><br><span class="line">y_hat = clf.predict(X_test)</span><br><span class="line">evaluate_predictions(y_hat, y_test)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>(3.085822784810127, 4.1968354564006045)
-</code></pre>
+<h2 id="调用模型">调用模型</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pickle_in = <span class="built_in">open</span>(<span class="string">&quot;final_model&quot;</span>, <span class="string">&quot;rb&quot;</span>)</span><br><span class="line">clf = pickle.load(pickle_in)</span><br><span class="line">y_hat = clf.predict(X_test)</span><br><span class="line">evaluate_predictions(y_hat, y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>(3.085822784810127, 4.1968354564006045)</code></pre>
 <p>结果和上方相同，证明模型调用成功</p>
 ]]></content>
       <categories>
@@ -535,11 +1090,13 @@ Baseline               3.607595  4.902854
   <entry>
     <title>图床的选取</title>
     <url>/2023/04/15/%E5%9B%BE%E5%BA%8A%E7%9A%84%E9%80%89%E5%8F%96/</url>
-    <content><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>图床的选取要根据自己的需求来，我对图床的要求首先是稳定，我的博客肯定是要写很长时间的，里面会有很多图片外链，要是图床用着用着挂了，图片找不回来，那肯定是欲哭无泪了，如果图片还有备份，重新写一遍图片外链也是一个巨大且恶心的工程；其次是要便宜，尽量免费，毕竟资金有限，但是免费的图床是必然不够稳定的，用爱发电的东西都具有极大的不确定性。综上，推断出我需要一个每月都有免费额度的付费图床。在保证稳定的同时，也不用掏钱，我的博客的流量肯定不大，免费额度够用了。</p>
-<span id="more"></span>
-
-<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>其实可选的还真不少，但是我最后还是确定了七牛云，其运营时间长、用户基数大、每月免费额度10g，各方面都非常合适。</p>
-<h2 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h2><p>网上的很多教程，都写了dsn加速云云，这东西和作为图床并不直接挂钩的同时还十分复杂，现在对我来说并不十分必要，所以直接把图片传上七牛云复制外链就行了，不要瞎折腾</p>
+    <content><![CDATA[<h2 id="目的">目的</h2>
+<p>图床的选取要根据自己的需求来，我对图床的要求首先是稳定，我的博客肯定是要写很长时间的，里面会有很多图片外链，要是图床用着用着挂了，图片找不回来，那肯定是欲哭无泪了，如果图片还有备份，重新写一遍图片外链也是一个巨大且恶心的工程；其次是要便宜，尽量免费，毕竟资金有限，但是免费的图床是必然不够稳定的，用爱发电的东西都具有极大的不确定性。综上，推断出我需要一个每月都有免费额度的付费图床。在保证稳定的同时，也不用掏钱，我的博客的流量肯定不大，免费额度够用了。
+<span id="more"></span></p>
+<h2 id="选择">选择</h2>
+<p>其实可选的还真不少，但是我最后还是确定了七牛云，其运营时间长、用户基数大、每月免费额度10g，各方面都非常合适。</p>
+<h2 id="误区">误区</h2>
+<p>网上的很多教程，都写了dsn加速云云，这东西和作为图床并不直接挂钩的同时还十分复杂，现在对我来说并不十分必要，所以直接把图片传上七牛云复制外链就行了，不要瞎折腾</p>
 ]]></content>
       <categories>
         <category>杂项</category>
@@ -549,10 +1106,103 @@ Baseline               3.607595  4.902854
       </tags>
   </entry>
   <entry>
+    <title>手动实现逻辑回归</title>
+    <url>/2023/04/16/%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<h1 id="原理">原理</h1>
+<h2 id="预测">预测</h2>
+<p>逻辑回归不同于线性回归直接输出结果，它输出的是结果的数理逻辑值：<span
+class="math inline">\(p = \sigma(\mathbf{w}\mathbf{x} +
+b)\)</span>，<span
+class="math inline">\(p\)</span>可以理解为对y=1概率的预测</p>
+<p>其中<span
+class="math inline">\(\sigma\)</span>是一个sigmoid函数，<span
+class="math inline">\(\sigma(z) = \frac{1}{1 +
+e^{-z}}\)</span>，如下图：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.arange(-<span class="number">10</span>, <span class="number">10</span>, <span class="number">0.1</span>)</span><br><span class="line">y = <span class="number">1</span> / (<span class="number">1</span> + np.e**(-x))</span><br><span class="line">plt.figure(figsize=(<span class="number">5</span>,<span class="number">2</span>)) <span class="comment">#要放在plt.plot之前</span></span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.axhline(y=<span class="number">0.5</span>, color=<span class="string">&#x27;grey&#x27;</span>, linestyle=<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">plt.axhline(y=<span class="number">1</span>, color=<span class="string">&#x27;grey&#x27;</span>, linestyle=<span class="string">&#x27;:&#x27;</span>) <span class="comment">#y=0.5,1 分别画一条线</span></span><br><span class="line">plt.axvline(x=<span class="number">0</span>, color=<span class="string">&#x27;black&#x27;</span>, linestyle=<span class="string">&#x27;-&#x27;</span>) <span class="comment">#x=0 画一条线</span></span><br><span class="line">plt.title(<span class="string">&quot;sigmoid&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/logisim_regression/output_4_0.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
+<p>一旦逻辑回归模型估算出实例x属于正类的概率 <span
+class="math inline">\(p=\sigma(\hat{z})\)</span> ，就可以轻松预测出
+<span class="math inline">\(\hat{y}\)</span>： <span
+class="math display">\[\hat{y} = \begin{cases}
+0 &amp; ,p &lt; 0.5 \\
+1 &amp; ,p \geq 0.5
+\end{cases}\]</span></p>
+<span id="more"></span>
+<h2 id="训练和成本函数">训练和成本函数</h2>
+<p>训练的目的就是设置参数向量θ,使模型对正类实例做出高概率估算(y=1),对负类实例做出低概率估算(y=0)。
+下面公式所示为单个训练实例x的成本函数,正说明了这一点。 <span
+class="math display">\[J(\theta) = \begin{cases}
+-log(\hat{p}) &amp; ,y=1 \\
+-log(1-\hat{p}) &amp; ,y=0
+\end{cases}\]</span></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.arange(<span class="number">0.01</span>, <span class="number">1</span>, <span class="number">0.02</span>)</span><br><span class="line">y1 = -np.log(x)</span><br><span class="line">y0 = -np.log(<span class="number">1</span>-x)</span><br><span class="line">plt.figure(figsize=(<span class="number">4</span>, <span class="number">2</span>))</span><br><span class="line">plt.plot(x, y1)</span><br><span class="line">plt.plot(x, y0)</span><br><span class="line">plt.axvline(x=<span class="number">0.5</span>, color=<span class="string">&#x27;black&#x27;</span>, linestyle=<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://everythingock-blog.oss-cn-beijing.aliyuncs.com/pictures/data_analysis/logisim_regression/output_8_0.png"
+alt="png" />
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
+<p>如图，当 <span class="math inline">\(p\)</span> 接近于0时, <span
+class="math inline">\(-log(p)\)</span>
+会变得非常大,所以如果模型估算一个正类实例的概率接近于0,成本将会变得很高。同理估算出一个负类实例的概率接近1,成本也会变得非常高。</p>
+<p>那么反过来,当 <span class="math inline">\(p\)</span> 接近于1的时候,
+<span class="math inline">\(-log(p)\)</span>
+接近于0,所以对一个负类实例估算出的概率接近于0,对一个正类实例估算出的概率接近于1,而成本则都接近于0,这不正好是我们想要的吗?</p>
+<p>值得注意的是，当y=0时, <span class="math display">\[-log(1-p) = - [
+ylog(p) + (1-y)log(1-p) ]\]</span>
+y=1时同样如此，所以可以将分段函数合为一个公式。得到成本函数： <span
+class="math display">\[J(\theta) = - \frac{1}{m} \sum_{i=1}^{m}[ ylog(p)
++ (1-y)log(1-p) ]\]</span></p>
+<p>但是坏消息是,这个函数没有已知的闭式方程(不存在一个标准方程的等价方程)来计算出最小化成本函数的θ值。而好消息是这是个凸函数,所以通过梯度下降(或是其他任意优化算法)保证能够找出全局最小值(只要学习率不是太高,你又能长时间等待)</p>
+<p>现在给出其偏导公式，求出并没有看起来那么困难，把<span
+class="math inline">\(p\)</span>展开为<span
+class="math inline">\(\sigma(wx+b)\)</span>,求起来就简单了： 首先定义
+<span class="math inline">\(error= \hat{y} - y\)</span>，<span
+class="math inline">\(\hat{y}\)</span>为y的预测值，为了理解下面的公式，别忘了<span
+class="math inline">\(\hat{y} = wx+b\)</span> <span
+class="math display">\[\frac{\partial{J}}{\partial{w}} = \frac{1}{m}
+\sum_{i=1}^{m}error \cdot x\]</span> <span
+class="math display">\[\frac{\partial{J}}{\partial{b}} = \frac{1}{m}
+\sum_{i=1}^{m}error\]</span></p>
+<p>现在我们已经了解了实现逻辑回归需要的知识。</p>
+<h1 id="实操">实操</h1>
+<h2 id="数据处理">数据处理</h2>
+<p>下面我将使用一个非常有名的数据集——鸢尾植物数据集——来说明逻辑回归共有150朵鸢尾花,分别来自三个不同品种(山鸢尾、变色鸢尾和维吉尼亚鸢尾),数据里包含花的
+<em>萼片以及花瓣的长度和宽度</em></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">df = pd.DataFrame(data=iris.data, </span><br><span class="line">                  columns=iris.feature_names) <span class="comment">#读取数据</span></span><br><span class="line">save = ~(iris.target == <span class="number">2</span>) <span class="comment">#保存类别不为2的花</span></span><br><span class="line">X = df[save] <span class="comment">#取出所有不是维吉尼亚鸢尾的花,即只留下两类花对应0,1</span></span><br><span class="line">y = iris.target[save]</span><br><span class="line"><span class="built_in">print</span>(X.head())</span><br><span class="line"><span class="built_in">print</span>(y)</span><br></pre></td></tr></table></figure>
+<pre><code>   sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)
+0                5.1               3.5                1.4               0.2
+1                4.9               3.0                1.4               0.2
+2                4.7               3.2                1.3               0.2
+3                4.6               3.1                1.5               0.2
+4                5.0               3.6                1.4               0.2
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]</code></pre>
+<h2 id="实现逻辑回归">实现逻辑回归</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">logisticRegression</span>(<span class="params">x:np.ndarray, y:np.ndarray, num_iter=<span class="number">5000</span>, alpha=<span class="number">0.01</span></span>):</span><br><span class="line">    w, b = np.zeros(<span class="number">4</span>), <span class="number">0</span></span><br><span class="line">    m = w.shape[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(num_iter):</span><br><span class="line">        z = x.dot(w) + b</span><br><span class="line">        y_hat = <span class="number">1</span> / (<span class="number">1</span> + np.e**(-z))</span><br><span class="line">        error = np.array(y_hat - y)</span><br><span class="line">        der_w = <span class="number">1</span>/m * np.<span class="built_in">sum</span>(x.T.dot(error))</span><br><span class="line">        der_b = <span class="number">1</span>/m * np.<span class="built_in">sum</span>(error)</span><br><span class="line">        w = w - (alpha * der_w)</span><br><span class="line">        b = b - (alpha * der_b)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> w, b</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">predict</span>(<span class="params">x:pd.DataFrame, w:np.ndarray, b:<span class="built_in">float</span></span>):</span><br><span class="line">    z = x.dot(w) + b</span><br><span class="line">    tmp = <span class="number">1</span> / (<span class="number">1</span> + np.e**(-z))</span><br><span class="line">    y_hat = <span class="built_in">list</span>()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tmp:</span><br><span class="line">        <span class="keyword">if</span> i &lt; <span class="number">0.5</span>:</span><br><span class="line">            y_hat.append(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            y_hat.append(<span class="number">1</span>)</span><br><span class="line">    y_hat = np.array(y_hat)</span><br><span class="line">    <span class="keyword">return</span> y_hat</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">error_variance</span>(<span class="params">y_hat:np.ndarray, y_test:np.ndarray</span>):</span><br><span class="line">    m = y_hat.shape[<span class="number">0</span>]</span><br><span class="line">    variance = <span class="number">1</span>/m * np.<span class="built_in">sum</span>((y_hat - y_test)**<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> variance</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;__main__&#x27;</span> == __name__:</span><br><span class="line">    iris = datasets.load_iris()</span><br><span class="line">    df = pd.DataFrame(data=iris.data,</span><br><span class="line">                    columns=iris.feature_names) <span class="comment">#读取数据</span></span><br><span class="line">    save = ~(iris.target == <span class="number">2</span>) <span class="comment">#保存类别不为2的花</span></span><br><span class="line">    X = df[save] <span class="comment">#去除维吉尼亚鸢尾花,只留下两类花对应0,1</span></span><br><span class="line">    y = iris.target[save]</span><br><span class="line"></span><br><span class="line">    x_train, x_test, y_train, y_test = train_test_split(</span><br><span class="line">        X, y, test_size=<span class="number">0.2</span>) <span class="comment">#已8:2拆分数据集为训练集和数据集</span></span><br><span class="line"></span><br><span class="line">    w, b = logisticRegression(x_train, y_train) <span class="comment">#逻辑回归返回y=wx+b中的w,b</span></span><br><span class="line">    y_hat = predict(x_test, w, b) <span class="comment">#使用测试集进行测试</span></span><br><span class="line">    variance = error_variance(y_hat, y_test)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;预测结果为：<span class="subst">&#123;y_hat&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;真实结果为：<span class="subst">&#123;y_test&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;方差为：<span class="subst">&#123;variance&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>预测结果为：[0 0 1 0 1 1 1 1 1 0 0 1 0 0 1 0 1 0 0 1]
+真实结果为：[0 0 1 0 1 1 1 1 1 0 0 1 1 0 1 0 1 0 0 1]
+方差为：0.05</code></pre>
+<p>由上面我们可以看到，预测可以说几乎完全正确，不止是程序，这应该也是数据集比较精良的结果</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>纪念hexo部署博客成功</title>
     <url>/2023/04/14/%E7%BA%AA%E5%BF%B5hexo%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2%E6%88%90%E5%8A%9F/</url>
-    <content><![CDATA[<p>使用学的第一门语言+第一个程序记录以下这个时刻</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello, world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<p>使用学的第一门语言+第一个程序记录以下这个时刻 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello, world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>杂项</category>
@@ -564,33 +1214,45 @@ Baseline               3.607595  4.902854
   <entry>
     <title>让google搜索到被hexo部署到github上的博客</title>
     <url>/2023/04/15/%E8%AE%A9google%E6%90%9C%E7%B4%A2%E5%88%B0%E8%A2%ABhexo%E9%83%A8%E7%BD%B2%E5%88%B0github%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h4 id="我的环境"><a href="#我的环境" class="headerlink" title="我的环境"></a>我的环境</h4><ul>
-<li><p><a href="https://github.com/hexojs/hexo">hexo</a>生成博客</p>
-</li>
-<li><p>主题是<a href="https://github.com/theme-next/hexo-theme-next">theme-next</a></p>
-</li>
-<li><p>使用github托管（以后也可能转到gitee）</p>
-</li>
+    <content><![CDATA[<h4 id="我的环境">我的环境</h4>
+<ul>
+<li><p><a
+href="https://github.com/hexojs/hexo">hexo</a>生成博客</p></li>
+<li><p>主题是<a
+href="https://github.com/theme-next/hexo-theme-next">theme-next</a></p></li>
+<li><p>使用github托管（以后也可能转到gitee）</p></li>
 </ul>
-<h4 id="测试网站能否被google检测到"><a href="#测试网站能否被google检测到" class="headerlink" title="测试网站能否被google检测到"></a>测试网站能否被google检测到</h4><p>搜索框（注意不是地址栏）输入<code>site:https:yourname.github.io</code>, 如果显示以下界面：</p>
-<span id="more"></span>
-
-<p><img src="https://i.328888.xyz/2023/04/15/i7RGsx.png" alt="Google Search Consolegoogle"></p>
-<p>说明你的网站google还找不到，为了解决这个问题，搜索Google Search Console。</p>
-<h4 id="Google-Search-Console添加自己的网址"><a href="#Google-Search-Console添加自己的网址" class="headerlink" title="Google Search Console添加自己的网址"></a>Google Search Console添加自己的网址</h4><ol>
-<li>点击进入<a href="https://search.google.com/search-console/about">Google Search Console</a></li>
-<li>通过网址前缀选项输入自己的github page网址，例如我的是<a href="https://everythinglock.github.io/">https://everythinglock.github.io</a></li>
-<li>hexo自有特殊情况在此，使用不了html文件验证，所以我们使用html标记验证，复制他给的元标记，粘贴到对应文件中，如果你使用next主题，文件为themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;head&#x2F;head.njk，其他主题应该也有对应文件，将元标记粘贴到文件最底部保存</li>
+<h4 id="测试网站能否被google检测到">测试网站能否被google检测到</h4>
+<p>搜索框（注意不是地址栏）输入<code>site:https:yourname.github.io</code>,
+如果显示以下界面： <span id="more"></span></p>
+<figure>
+<img src="https://i.328888.xyz/2023/04/15/i7RGsx.png"
+alt="Google Search Consolegoogle" />
+<figcaption aria-hidden="true">Google Search Consolegoogle</figcaption>
+</figure>
+<p>说明你的网站google还找不到，为了解决这个问题，搜索Google Search
+Console。</p>
+<h4 id="google-search-console添加自己的网址">Google Search
+Console添加自己的网址</h4>
+<ol type="1">
+<li>点击进入<a
+href="https://search.google.com/search-console/about">Google Search
+Console</a></li>
+<li>通过网址前缀选项输入自己的github page网址，例如我的是<a
+href="https://everythinglock.github.io">https://everythinglock.github.io</a></li>
+<li>hexo自有特殊情况在此，使用不了html文件验证，所以我们使用html标记验证，复制他给的元标记，粘贴到对应文件中，如果你使用next主题，文件为themes/next/layout/_partials/head/head.njk，其他主题应该也有对应文件，将元标记粘贴到文件最底部保存</li>
 <li>执行以下命令后点击验证就大功告成 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h4 id="添加sitemap"><a href="#添加sitemap" class="headerlink" title="添加sitemap"></a>添加sitemap</h4><p>sitemap可以让网络爬虫了解我们网站的结构，快速建立索引，加快爬虫的爬取。</p>
-<ol>
-<li>安装插件<br>在<font size=4 color=yellowgreen>blog目录</font>下执行<code>npm install hexo-generator-sitemap --save</code></li>
-<li>更新配置<br> 在blog根目录下的_config.yml文件中添加以下内容： <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br></pre></td></tr></table></figure>
- 返回终端执行命令： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
- 最后注意，根目录下_config.yml中的url应该修改为<a href="https://yourname.github.io格式/">https://yourname.github.io格式</a></li>
-<li>添加站点地图<br>左方侧边栏点击站点地图，然后输入你的sitemap文件地址就行，如：<br><img src="https://i.328888.xyz/2023/04/15/i7mm6V.png" alt="sitemap"></li>
-</ol>
+<h4 id="添加sitemap">添加sitemap</h4>
+<p>sitemap可以让网络爬虫了解我们网站的结构，快速建立索引，加快爬虫的爬取。
+1. 安装插件
+在<font size=4 color=yellowgreen>blog目录</font>下执行<code>npm install hexo-generator-sitemap --save</code>
+2. 更新配置 在blog根目录下的_config.yml文件中添加以下内容：
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br></pre></td></tr></table></figure> 返回终端执行命令： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+最后注意，根目录下_config.yml中的url应该修改为https://yourname.github.io格式
+3. 添加站点地图
+左方侧边栏点击站点地图，然后输入你的sitemap文件地址就行，如： <img
+src="https://i.328888.xyz/2023/04/15/i7mm6V.png" alt="sitemap" /></p>
 <p>成功！但是目前google可能还是找不到你的网站，这是正常现象，等待一段时间即可。</p>
 ]]></content>
       <categories>
